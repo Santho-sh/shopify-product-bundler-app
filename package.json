@@ -51,11 +51,14 @@
     "@shopify/app": "^3.45.4",
     "@shopify/cli": "^3.45.4",
     "@shopify/cli-kit": "^3.45.4",
+    "@types/node": "^20.2.1",
+    "@types/react": "^18.2.6",
     "dotenv": "^16.0.3",
     "ngrok": "^4.3.3",
     "npm-check-updates": "^16.10.12",
     "prettier": "^2.8.8",
-    "prisma": "^4.14.0"
+    "prisma": "^4.14.0",
+    "typescript": "^5.0.4"
   },
   "overrides": {
     "@shopify/cli-kit": {
