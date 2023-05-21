@@ -9,8 +9,6 @@ import {
   Page,
   TextField,
 } from "@shopify/polaris";
-import { useRouter } from "next/router";
-import ProductsList from "../components/ProductsList";
 
 //On first install, check if the store is installed and redirect accordingly
 export async function getServerSideProps(context) {
@@ -18,42 +16,18 @@ export async function getServerSideProps(context) {
 }
 
 const Settings = () => {
-  const router = useRouter();
   const app = useAppBridge();
   const redirect = Redirect.create(app);
 
   return (
     <Page
-      title="Settings"
+      title="Settinngs"
       backAction={{
         onAction: () => redirect.dispatch(Redirect.Action.APP, "/"),
       }}
     >
       <Layout>
-        <ProductsList />
-        <Layout.Section fullWidth>
-          <Form onSubmit={() => {}}>
-            <ContextualSaveBar
-              saveAction={{
-                label: "Save",
-              }}
-              discardAction={{
-                label: "Discard",
-              }}
-              fullWidth
-            />
-            <FormLayout>
-              <AlphaCard>
-                <TextField
-                  autoComplete="true"
-                  label="Title"
-                  labelHidden
-                  helpText="Title of the bundle"
-                />
-              </AlphaCard>
-            </FormLayout>
-          </Form>
-        </Layout.Section>
+        <Layout.Section fullWidth></Layout.Section>
       </Layout>
     </Page>
   );
