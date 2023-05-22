@@ -1,4 +1,4 @@
-import useFetch from "@/components/hooks/useFetch";
+import useFetch from "../components/hooks/useFetch";
 import { DataTable, LegacyCard, Page } from "@shopify/polaris";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";

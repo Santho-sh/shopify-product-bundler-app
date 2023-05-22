@@ -1,13 +1,16 @@
 import isShopAvailable from "../utils/middleware/isShopAvailable";
 import { ResourcePicker, useAppBridge } from "@shopify/app-bridge-react";
 import { Redirect } from "@shopify/app-bridge/actions";
+import { Product } from "@shopify/app-bridge/actions/ResourcePicker";
+import SelectedProductsTable from "../components/SelectedProductsTable";
 import {
+  Banner,
+  Box,
   Button,
   Form,
   FormLayout,
   Layout,
   LegacyCard,
-  List,
   Page,
   Text,
   TextField,
@@ -15,14 +18,11 @@ import {
 import { useCallback, useState } from "react";
 import React from "react";
 
-//On first install, check if the store is installed and redirect accordingly
-export async function getServerSideProps(context) {
-  return await isShopAvailable(context);
-}
-
 const CreateBundle = () => {
   const app = useAppBridge();
   const redirect = Redirect.create(app);
+
+  const [selectedProducts, setSelectedProducts] = useState<Product[]>([]);
 
   const [bundleName, setBundleName] = useState("Bundle discount");
   const [title, setTitle] = useState("Get a discount!");
@@ -32,9 +32,8 @@ const CreateBundle = () => {
   const [discount, setDiscount] = useState("10");
   const [resoursePicker, setResoursePicker] = useState(false);
 
-  const handleSubmit = useCallback(() => {
-    setBundleName("");
-  }, []);
+  // Submit Form: Create Bundle
+  const handleSubmit = async () => {};
 
   const handleBundleNameChange = useCallback(
     (value: string) => setBundleName(value),
@@ -107,10 +106,7 @@ const CreateBundle = () => {
                 </LegacyCard.Section>
               </LegacyCard>
 
-              <LegacyCard
-                title="Discounted products in bundleOnline store dashboard"
-                sectioned
-              >
+              <LegacyCard title="Discounted products in bundle" sectioned>
                 <Text as="p" color="subdued">
                   Select the products you want to offer in the bundle. It is
                   recommended to select only a handful of product (e.g. 2 - 4
@@ -118,12 +114,17 @@ const CreateBundle = () => {
                   won't overwhelm your customers.
                 </Text>
                 <LegacyCard.Section>
-                  <List>
-                    <List.Item>Felix Crafford</List.Item>
-                    <List.Item>Ezequiel Manno</List.Item>
-                  </List>
+                  {selectedProducts.length == 0 ? (
+                    <Banner status="warning">
+                      <Text as="p" color="warning">
+                        You have to select at least one product if you want to
+                        save the bundle.
+                      </Text>
+                    </Banner>
+                  ) : (
+                    <SelectedProductsTable products={selectedProducts} />
+                  )}
                 </LegacyCard.Section>
-
                 <Button primary onClick={() => setResoursePicker(true)}>
                   Select Products
                 </Button>
@@ -131,14 +132,30 @@ const CreateBundle = () => {
               <ResourcePicker
                 resourceType="Product"
                 open={resoursePicker}
+                initialSelectionIds={selectedProducts.map((product) => {
+                  return {
+                    id: product.id,
+                    variants: product.variants.map((varient) => {
+                      return { id: varient.id };
+                    }),
+                  };
+                })}
                 onSelection={(payload) => {
-                  console.log(payload);
+                  setSelectedProducts(payload.selection as Product[]);
+                  setResoursePicker(false);
                 }}
+                onCancel={() => setResoursePicker(false)}
               />
-
-              <Button primary submit>
-                Save
-              </Button>
+              <Box paddingBlockEnd="4">
+                <Button
+                  size="large"
+                  primary
+                  submit
+                  disabled={selectedProducts.length == 0 ? true : false}
+                >
+                  Save bundle
+                </Button>
+              </Box>
             </FormLayout>
           </Form>
         </Layout.Section>
@@ -146,5 +163,10 @@ const CreateBundle = () => {
     </Page>
   );
 };
+
+//On first install, check if the store is installed and redirect accordingly
+export async function getServerSideProps(context) {
+  return await isShopAvailable(context);
+}
 
 export default CreateBundle;

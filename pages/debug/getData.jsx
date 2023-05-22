@@ -1,4 +1,4 @@
-import useFetch from "@/components/hooks/useFetch";
+import useFetch from "../components/hooks/useFetch";
 import { useAppBridge } from "@shopify/app-bridge-react";
 import { Redirect } from "@shopify/app-bridge/actions";
 import { Layout, LegacyCard, Link, Page } from "@shopify/polaris";

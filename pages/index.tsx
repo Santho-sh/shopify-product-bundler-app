@@ -4,18 +4,13 @@ import { Redirect } from "@shopify/app-bridge/actions";
 import { Button, Layout, Page } from "@shopify/polaris";
 import ProductsList from "../components/ProductsList";
 
-//On first install, check if the store is installed and redirect accordingly
-export async function getServerSideProps(context) {
-  return await isShopAvailable(context);
-}
-
 const HomePage = () => {
   const app = useAppBridge();
   const redirect = Redirect.create(app);
 
   return (
     <Page
-      title="Home"
+      title="Bundles"
       secondaryActions={
         <Button
           onClick={() => {
@@ -40,5 +35,10 @@ const HomePage = () => {
     </Page>
   );
 };
+
+//On first install, check if the store is installed and redirect accordingly
+export async function getServerSideProps(context) {
+  return await isShopAvailable(context);
+}
 
 export default HomePage;
