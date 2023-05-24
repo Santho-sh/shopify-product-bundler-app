@@ -1,6 +1,6 @@
 import { ApiVersion } from "@shopify/shopify-api";
-import sessionHandler from "./sessionHandler.js";
-import shopify from "./shopify.js";
+import sessionHandler from "./sessionHandler";
+import shopify from "./shopify";
 
 const currentApiVersion = ApiVersion.January23;
 

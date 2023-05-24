@@ -1,5 +1,5 @@
-import sessionHandler from "@/utils/sessionHandler.js";
-import shopify from "@/utils/shopify.js";
+import sessionHandler from "@/utils/sessionHandler";
+import shopify from "@/utils/shopify";
 
 const TEST_QUERY = `
 {

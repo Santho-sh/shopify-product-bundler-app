@@ -1,4 +1,4 @@
-import useFetch from "../components/hooks/useFetch";
+import useFetch from "@/components/hooks/useFetch";
 import { useAppBridge } from "@shopify/app-bridge-react";
 import { Redirect } from "@shopify/app-bridge/actions";
 import { DataTable, Layout, LegacyCard, Page } from "@shopify/polaris";
@@ -77,7 +77,7 @@ const ActiveSubscriptions = () => {
       rowsData.push(["No Plan", "N/A", "N/A", "USD 0.00"]);
     } else {
       console.log("Rendering Data");
-      Object.entries(activeSubscriptions).map(([key, value]) => {
+      Object.entries(activeSubscriptions).map(([key, value]: [any, any]) => {
         const { name, status, test } = value;
         const { amount, currencyCode } =
           value.lineItems[0].plan.pricingDetails.price;

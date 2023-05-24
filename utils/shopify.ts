@@ -1,4 +1,9 @@
-import { DeliveryMethod, LogSeverity, shopifyApi } from "@shopify/shopify-api";
+import {
+  ApiVersion,
+  DeliveryMethod,
+  LogSeverity,
+  shopifyApi,
+} from "@shopify/shopify-api";
 import "@shopify/shopify-api/adapters/node";
 import appUninstallHandler from "./webhooks/app_uninstalled";
 
@@ -8,10 +13,10 @@ const isDev = process.env.NODE_ENV === "development";
 const shopify = shopifyApi({
   apiKey: process.env.SHOPIFY_API_KEY,
   apiSecretKey: process.env.SHOPIFY_API_SECRET,
-  scopes: process.env.SHOPIFY_API_SCOPES,
+  scopes: process.env.SHOPIFY_API_SCOPES.split(","),
   hostName: process.env.SHOPIFY_APP_URL.replace(/https:\/\//, ""),
   hostScheme: "https",
-  apiVersion: process.env.SHOPIFY_API_VERSION,
+  apiVersion: process.env.SHOPIFY_API_VERSION as ApiVersion,
   isEmbeddedApp: true,
   logger: { level: isDev ? 0 : 0 }, //Error = 0,Warning = 1,Info = 2,Debug = 3
   // logger: { level: LogSeverity.Debug, httpRequests: true }, //For insane levels of debugging

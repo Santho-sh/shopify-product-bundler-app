@@ -1,9 +1,5 @@
-// If you have the recommended extension installed, create a new page and type `createapi` to generate api endpoint boilerplate
-
-//TEMP
-
 import clientProvider from "@/utils/clientProvider";
-import withMiddleware from "@/utils/middleware/withMiddleware.js";
+import withMiddleware from "@/utils/middleware/withMiddleware";
 
 const handler = async (req, res) => {
   if (req.method === "GET") {

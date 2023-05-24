@@ -1,7 +1,7 @@
 /*
   Webhook handlers are registered at `./utils/shopify.js`
 */
-import shopify from "@/utils/shopify.js";
+import shopify from "@/utils/shopify";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {

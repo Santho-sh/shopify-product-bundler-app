@@ -3,8 +3,8 @@ import {
   InvalidOAuthError,
   InvalidSession,
 } from "@shopify/shopify-api";
-import shopify from "@/utils/shopify.js";
-import prisma from "@/utils/prisma.js";
+import shopify from "@/utils/shopify";
+import prisma from "@/utils/prisma";
 
 const handler = async (req, res) => {
   try {

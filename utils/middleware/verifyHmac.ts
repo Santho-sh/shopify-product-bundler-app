@@ -1,6 +1,6 @@
 import crypto from "crypto";
-import { NextResponse } from "next/server.js";
-import shopify from "@/utils/shopify.js";
+import { NextResponse } from "next/server";
+import shopify from "@/utils/shopify";
 
 const verifyHmac = async (req, res, next) => {
   try {

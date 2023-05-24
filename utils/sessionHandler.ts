@@ -1,6 +1,6 @@
 import { Session } from "@shopify/shopify-api";
-import cryption from "./cryption.js";
-import prisma from "./prisma.js";
+import cryption from "./cryption";
+import prisma from "./prisma";
 
 const storeSession = async (session) => {
   await prisma.session.upsert({

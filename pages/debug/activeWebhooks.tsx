@@ -1,4 +1,4 @@
-import useFetch from "../components/hooks/useFetch";
+import useFetch from "@/components/hooks/useFetch";
 import { DataTable, LegacyCard, Page } from "@shopify/polaris";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -17,7 +17,7 @@ const ActiveWebhooks = () => {
     const data = await res.json();
     let rowData = [];
     Object.entries(data.body.data.webhookSubscriptions.edges).map(
-      ([key, value]) => {
+      ([key, value]: [any, any]) => {
         const topic = value.node.topic;
         const callbackUrl = value.node.endpoint.callbackUrl;
         rowData.push([topic, callbackUrl]);

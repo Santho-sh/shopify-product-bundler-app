@@ -6,7 +6,7 @@ function useFetch() {
   const app = useAppBridge();
   const fetchFunction = authenticatedFetch(app);
 
-  return async (uri, options) => {
+  return async (uri: RequestInfo, options?: RequestInit) => {
     const response = await fetchFunction(uri, options);
 
     if (

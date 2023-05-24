@@ -1,4 +1,4 @@
-import withMiddleware from "@/utils/middleware/withMiddleware.js";
+import withMiddleware from "@/utils/middleware/withMiddleware";
 
 const handler = async (req, res) => {
   if (req.method !== "POST") {

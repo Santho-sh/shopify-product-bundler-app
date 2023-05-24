@@ -1,8 +1,9 @@
-import isShopAvailable from "../utils/middleware/isShopAvailable";
+import isShopAvailable from "@/utils/middleware/isShopAvailable";
 import { ResourcePicker, useAppBridge } from "@shopify/app-bridge-react";
 import { Redirect } from "@shopify/app-bridge/actions";
 import { Product } from "@shopify/app-bridge/actions/ResourcePicker";
-import SelectedProductsTable from "../components/SelectedProductsTable";
+import SelectedProductsTable from "@/components/SelectedProductsTable";
+
 import {
   Banner,
   Box,

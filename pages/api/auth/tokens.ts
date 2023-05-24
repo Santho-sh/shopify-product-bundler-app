@@ -1,6 +1,6 @@
-import prisma from "@/utils/prisma.js";
-import sessionHandler from "@/utils/sessionHandler.js";
-import shopify from "@/utils/shopify.js";
+import prisma from "@/utils/prisma";
+import sessionHandler from "@/utils/sessionHandler";
+import shopify from "@/utils/shopify";
 import {
   CookieNotFound,
   InvalidOAuthError,

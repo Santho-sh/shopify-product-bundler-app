@@ -1,8 +1,8 @@
-import isShopAvailable from "../utils/middleware/isShopAvailable";
+import isShopAvailable from "@/utils/middleware/isShopAvailable";
 import { useAppBridge } from "@shopify/app-bridge-react";
 import { Redirect } from "@shopify/app-bridge/actions";
 import { Button, Layout, Page } from "@shopify/polaris";
-import ProductsList from "../components/ProductsList";
+import ProductsList from "@/components/ProductsList";
 
 const HomePage = () => {
   const app = useAppBridge();

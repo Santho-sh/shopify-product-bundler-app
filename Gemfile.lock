@@ -1,0 +1,23 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    ast (2.4.2)
+    liquid (5.4.0)
+    nokogiri (1.15.1-x64-mingw-ucrt)
+      racc (~> 1.4)
+    parser (3.2.2.1)
+      ast (~> 2.4.1)
+    racc (1.6.2)
+    theme-check (1.15.0)
+      liquid (>= 5.4.0)
+      nokogiri (>= 1.12)
+      parser (~> 3)
+
+PLATFORMS
+  x64-mingw-ucrt
+
+DEPENDENCIES
+  theme-check
+
+BUNDLED WITH
+   2.4.10

@@ -1,7 +1,7 @@
 import { label } from "next-api-middleware";
-import verifyHmac from "./verifyHmac.js";
-import verifyProxy from "./verifyProxy.js";
-import verifyRequest from "./verifyRequest.js";
+import verifyHmac from "./verifyHmac";
+import verifyProxy from "./verifyProxy";
+import verifyRequest from "./verifyRequest";
 
 const withMiddleware = label({
   verifyRequest: verifyRequest,

@@ -1,6 +1,6 @@
-import withMiddleware from "../utils/middleware/withMiddleware.js";
-import shopify from "../utils/shopify.js";
-import sessionHandler from "../utils/sessionHandler.js";
+import withMiddleware from "@/utils/middleware/withMiddleware";
+import shopify from "@/utils/shopify";
+import sessionHandler from "@/utils/sessionHandler";
 
 const handler = async (req, res) => {
   //Reject anything that's not a POST

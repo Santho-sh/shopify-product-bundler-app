@@ -1,4 +1,6 @@
-import withMiddleware from "@/utils/middleware/withMiddleware.js";
+//This is the same as `pages/api/index.js`.
+
+import withMiddleware from "@/utils/middleware/withMiddleware";
 
 const handler = async (req, res) => {
   if (req.method === "GET") {
