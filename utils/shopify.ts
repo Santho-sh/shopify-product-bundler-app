@@ -1,9 +1,4 @@
-import {
-  ApiVersion,
-  DeliveryMethod,
-  LogSeverity,
-  shopifyApi,
-} from "@shopify/shopify-api";
+import { ApiVersion, DeliveryMethod, shopifyApi } from "@shopify/shopify-api";
 import "@shopify/shopify-api/adapters/node";
 import appUninstallHandler from "./webhooks/app_uninstalled";
 

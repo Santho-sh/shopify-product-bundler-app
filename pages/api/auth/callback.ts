@@ -1,4 +1,5 @@
 import prisma from "@/utils/prisma";
+import { createBundleDefinition } from "@/utils/productBundles";
 import sessionHandler from "@/utils/sessionHandler";
 import shopify from "@/utils/shopify";
 
@@ -14,6 +15,14 @@ const handler = async (req, res) => {
 
     const host = req.query.host;
     const { shop } = session;
+
+    try {
+      const client = new shopify.clients.Graphql({ session });
+      const res = await createBundleDefinition(client);
+      console.log("createBundleDefinition:", res);
+    } catch (e) {
+      console.log("Exception while creating bundle definition:", e);
+    }
 
     await prisma.active_stores.upsert({
       where: { shop: shop },
