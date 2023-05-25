@@ -18,23 +18,43 @@ import {
 } from "@shopify/polaris";
 import { useCallback, useState } from "react";
 import React from "react";
+import useFetch from "@/components/hooks/useFetch";
+import { BundleData } from "@/utils/productBundles";
 
-const CreateBundle = () => {
+const CreateBundlePage = () => {
   const app = useAppBridge();
   const redirect = Redirect.create(app);
-
-  const [selectedProducts, setSelectedProducts] = useState<Product[]>([]);
+  const fetch = useFetch();
 
   const [bundleName, setBundleName] = useState("Bundle discount");
-  const [title, setTitle] = useState("Get a discount!");
+  const [bundleTitle, setBundleTitle] = useState("Get a discount!");
   const [description, setDescription] = useState(
     "Buy these products together and get a discount!"
   );
   const [discount, setDiscount] = useState("10");
+  const [selectedProducts, setSelectedProducts] = useState<Product[]>([]);
+
   const [resoursePicker, setResoursePicker] = useState(false);
 
   // Submit Form: Create Bundle
-  const handleSubmit = async () => {};
+  async function handleSubmit() {
+    const data: BundleData = {
+      bundleName: bundleName,
+      bundleTitle: bundleTitle,
+      description: description,
+      discount: discount,
+      products: selectedProducts.map((products) => {
+        return products.id;
+      }),
+      productsQuantities: [1],
+    };
+
+    let response = await fetch("/api/createBundle", {
+      method: "POST",
+      body: JSON.stringify(data),
+    });
+    setSelectedProducts([]);
+  }
 
   const handleBundleNameChange = useCallback(
     (value: string) => setBundleName(value),
@@ -44,7 +64,10 @@ const CreateBundle = () => {
     (value: string) => setDiscount(value),
     []
   );
-  const handleTitleChange = useCallback((value: string) => setTitle(value), []);
+  const handleTitleChange = useCallback(
+    (value: string) => setBundleTitle(value),
+    []
+  );
   const handleDescriptionChange = useCallback(
     (value: string) => setDescription(value),
     []
@@ -75,7 +98,7 @@ const CreateBundle = () => {
 
                 <LegacyCard.Section>
                   <TextField
-                    value={title}
+                    value={bundleTitle}
                     onChange={handleTitleChange}
                     label="Title"
                     helpText="Title will be displayed on product pages."
@@ -103,6 +126,7 @@ const CreateBundle = () => {
                     type="number"
                     suffix="%"
                     autoComplete="10"
+                    max={100}
                   />
                 </LegacyCard.Section>
               </LegacyCard>
@@ -170,4 +194,4 @@ export async function getServerSideProps(context) {
   return await isShopAvailable(context);
 }
 
-export default CreateBundle;
+export default CreateBundlePage;
