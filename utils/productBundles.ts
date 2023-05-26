@@ -49,6 +49,39 @@ export interface BundleCreateQuery {
   };
 }
 
+export type GetBundleQuery = {
+  data: {
+    metaobject: {
+      fields: Array<{
+        key: string;
+        value: string;
+      }>;
+    };
+  };
+};
+
+export type GetBundlesQuery = {
+  data: {
+    metaobjects: {
+      edges: Array<{
+        node: {
+          id: string;
+          fields: Array<{
+            key: string;
+            value: string;
+          }>;
+        };
+      }>;
+      pageInfo: {
+        startCursor: string;
+        endCursor: string;
+        hasNextPage: boolean;
+        hasPreviousPage: boolean;
+      };
+    };
+  };
+};
+
 async function createBundleDefinition(client: GraphqlClient) {
   const { body } = await client.query<BundleDefinitionQuery>({
     data: {
@@ -105,6 +138,13 @@ async function createBundleDefinition(client: GraphqlClient) {
               description: "Bundle Creation Time",
               required: true,
               type: "date_time",
+            },
+            {
+              name: "Auto Generated",
+              key: "auto_generated",
+              description: "Bundle Auto Created or Not",
+              required: true,
+              type: "boolean",
             },
             {
               name: "Discount",
@@ -195,4 +235,166 @@ async function createBundle(client: GraphqlClient, data: BundleData) {
   return body.data?.metaobjectCreate.metaobject != null;
 }
 
-export { createBundleDefinition, createBundle };
+async function editBundle(client: GraphqlClient, data: BundleData) {
+  const { body } = await client.query<BundleCreateQuery>({
+    data: {
+      query: `mutation UpdateMetaobject($id: ID!, $metaobject: MetaobjectUpdateInput!) {
+        metaobjectUpdate(id: $id, metaobject: $metaobject) {
+          metaobject {
+            id
+            season: fields {
+              key
+              value
+            }
+          }
+          userErrors {
+            field
+            message
+            code
+          }
+        }
+      }`,
+      variables: {
+        metaobject: {
+          type: "product-bundles",
+          fields: [
+            {
+              key: "bundle_name",
+              value: data.bundleName,
+            },
+            {
+              key: "bundle_title",
+              value: data.bundleTitle,
+            },
+            {
+              key: "description",
+              value: data.description,
+            },
+            {
+              key: "created_at",
+              value: new Date().toISOString(),
+            },
+            {
+              key: "discount",
+              value: data.discount,
+            },
+            {
+              key: "products",
+              value: JSON.stringify(data.products),
+            },
+            {
+              key: "products_quantities",
+              value: JSON.stringify(data.productsQuantities),
+            },
+          ],
+        },
+      },
+    },
+  });
+
+  return body.data?.metaobjectCreate.metaobject != null;
+}
+
+async function getBundles(
+  client: GraphqlClient,
+  after: boolean,
+  cursor: string = null
+) {
+  let query: string;
+
+  if (cursor) {
+    if (after) {
+      query = `{
+        metaobjects(type: "product-bundles" first: 10 after:${cursor}) {
+          edges {
+            node {  
+              id
+              fields {
+                key
+                value
+              }
+            }
+          }
+          pageInfo {
+            startCursor
+            endCursor
+            hasNextPage
+            hasPreviousPage
+          } 
+        }
+      }`;
+    } else {
+      query = `{
+        metaobjects(type: "product-bundles" first: 10 before:${cursor}) {
+          edges {
+            node {  
+              id
+              fields {
+                key
+                value
+              }
+            }
+          } 
+          pageInfo {
+            startCursor
+            endCursor
+            hasNextPage
+            hasPreviousPage
+          }
+        }
+      }`;
+    }
+  } else {
+    query = `{
+      metaobjects(type: "product-bundles" first: 10 ) {
+        edges {
+          node {  
+            id
+            fields {
+              key
+              value
+            }
+          }
+        } 
+        pageInfo {
+          startCursor
+          endCursor
+          hasNextPage
+          hasPreviousPage
+        }
+      }
+    }`;
+  }
+
+  const { body } = await client.query<GetBundlesQuery>({
+    data: {
+      query: query,
+    },
+  });
+  return body.data?.metaobjects;
+}
+
+async function getBundle(client: GraphqlClient, id: string) {
+  const { body } = await client.query<GetBundleQuery>({
+    data: {
+      query: `{
+        metaobject(id: ${id}) {
+          id
+          fields {
+            key
+            value
+          }
+        }
+      }`,
+    },
+  });
+  return body.data?.metaobject;
+}
+
+export {
+  createBundleDefinition,
+  createBundle,
+  getBundles,
+  getBundle,
+  editBundle,
+};
