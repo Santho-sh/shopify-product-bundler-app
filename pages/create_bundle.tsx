@@ -1,25 +1,25 @@
 import isShopAvailable from "@/utils/middleware/isShopAvailable";
-import { ResourcePicker, useAppBridge } from "@shopify/app-bridge-react";
+import { ResourcePicker, Toast, useAppBridge } from "@shopify/app-bridge-react";
 import { Redirect } from "@shopify/app-bridge/actions";
 import { Product } from "@shopify/app-bridge/actions/ResourcePicker";
 import SelectedProductsTable from "@/components/SelectedProductsTable";
 
 import {
   Banner,
-  Box,
   Button,
   Form,
   FormLayout,
   Layout,
   LegacyCard,
   Page,
+  Spinner,
   Text,
   TextField,
 } from "@shopify/polaris";
 import { useCallback, useState } from "react";
 import React from "react";
 import useFetch from "@/components/hooks/useFetch";
-import { BundleData } from "@/utils/productBundles";
+import { BundleData } from "@/utils/shopifyQueries/createBundle";
 
 const CreateBundlePage = () => {
   const app = useAppBridge();
@@ -33,11 +33,12 @@ const CreateBundlePage = () => {
   );
   const [discount, setDiscount] = useState("10");
   const [selectedProducts, setSelectedProducts] = useState<Product[]>([]);
-
   const [resoursePicker, setResoursePicker] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  // Submit Form: Create Bundle
+  // Submit Form: Create new Bundle
   async function handleSubmit() {
+    setLoading(true);
     const data: BundleData = {
       bundleName: bundleName,
       bundleTitle: bundleTitle,
@@ -53,8 +54,46 @@ const CreateBundlePage = () => {
       method: "POST",
       body: JSON.stringify(data),
     });
+    if (response) {
+      setBundleName("Bundle discount");
+      setBundleTitle("Get a discount!");
+      setDescription("Buy these products together and get a discount!");
+      setDiscount("10");
+      toggleSuccessToastActive();
+    } else {
+      toggleErrorToastActive();
+    }
     setSelectedProducts([]);
+    setLoading(false);
   }
+  // success/error toast messages
+  const [successToastActive, setSuccessToastActive] = useState(false);
+  const [errorToastActive, setErrorToastActive] = useState(false);
+
+  const toggleSuccessToastActive = useCallback(
+    () => setSuccessToastActive((active) => !active),
+    []
+  );
+  const toggleErrorToastActive = useCallback(
+    () => setErrorToastActive((active) => !active),
+    []
+  );
+
+  const successToast = successToastActive ? (
+    <Toast
+      content="Bundle Saved"
+      onDismiss={toggleSuccessToastActive}
+      duration={3000}
+    />
+  ) : null;
+  const errorToast = errorToastActive ? (
+    <Toast
+      content="Error while creating bundle"
+      onDismiss={toggleErrorToastActive}
+      duration={3000}
+      error
+    />
+  ) : null;
 
   const handleBundleNameChange = useCallback(
     (value: string) => setBundleName(value),
@@ -171,7 +210,9 @@ const CreateBundlePage = () => {
                 }}
                 onCancel={() => setResoursePicker(false)}
               />
-              <Box paddingBlockEnd="4">
+              <div
+                style={{ display: "flex", gap: "1rem", paddingBottom: "1rem" }}
+              >
                 <Button
                   size="large"
                   primary
@@ -180,11 +221,16 @@ const CreateBundlePage = () => {
                 >
                   Save bundle
                 </Button>
-              </Box>
+                {loading ? (
+                  <Spinner accessibilityLabel="Spinner example" size="large" />
+                ) : null}
+              </div>
             </FormLayout>
           </Form>
         </Layout.Section>
       </Layout>
+      {successToast}
+      {errorToast}
     </Page>
   );
 };
