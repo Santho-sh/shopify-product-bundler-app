@@ -2,7 +2,7 @@ import isShopAvailable from "@/utils/middleware/isShopAvailable";
 import { useAppBridge } from "@shopify/app-bridge-react";
 import { Redirect } from "@shopify/app-bridge/actions";
 import { Button, Layout, Page } from "@shopify/polaris";
-import ProductsList from "@/components/ProductsList";
+import ProductsTable from "@/components/ProductsTable";
 
 const HomePage = () => {
   const app = useAppBridge();
@@ -29,7 +29,7 @@ const HomePage = () => {
     >
       <Layout>
         <Layout.Section>
-          <ProductsList />
+          <ProductsTable />
         </Layout.Section>
       </Layout>
     </Page>
