@@ -1,40 +1,39 @@
 import { GraphqlClient } from "@shopify/shopify-api/lib/clients/graphql/graphql_client";
 
-export interface BundleData {
+export interface EditedBundleData {
+  id: string;
   bundleName: string;
   bundleTitle: string;
   description: string;
   discount: string;
-  products: Array<string>;
-  productsQuantities: Array<number>;
 }
 
-export interface BundleCreateQuery {
+export interface BundleUpdateQuery {
   data: {
-    metaobjectCreate: {
+    metaobjectUpdate: {
       metaobject?: {
+        id: string;
         fields: Array<{
           key: string;
           value: string;
         }>;
       };
-      userErrors: Array<{
-        field: Array<string>;
-        message: string;
-        code: string;
-      }>;
+      userErrors: [];
     };
   };
 }
 
-export async function editBundle(client: GraphqlClient, data: BundleData) {
-  const { body } = await client.query<BundleCreateQuery>({
+export async function editBundle(
+  client: GraphqlClient,
+  data: EditedBundleData
+) {
+  const { body } = await client.query<BundleUpdateQuery>({
     data: {
       query: `mutation UpdateMetaobject($id: ID!, $metaobject: MetaobjectUpdateInput!) {
           metaobjectUpdate(id: $id, metaobject: $metaobject) {
             metaobject {
               id
-              season: fields {
+              fields {
                 key
                 value
               }
@@ -47,8 +46,8 @@ export async function editBundle(client: GraphqlClient, data: BundleData) {
           }
         }`,
       variables: {
+        id: data.id,
         metaobject: {
-          type: "product-bundles",
           fields: [
             {
               key: "bundle_name",
@@ -63,26 +62,14 @@ export async function editBundle(client: GraphqlClient, data: BundleData) {
               value: data.description,
             },
             {
-              key: "created_at",
-              value: new Date().toISOString(),
-            },
-            {
               key: "discount",
               value: data.discount,
-            },
-            {
-              key: "products",
-              value: JSON.stringify(data.products),
-            },
-            {
-              key: "products_quantities",
-              value: JSON.stringify(data.productsQuantities),
             },
           ],
         },
       },
     },
   });
-
-  return body.data?.metaobjectCreate.metaobject != null;
+  console.log(body.data);
+  return body.data?.metaobjectUpdate.metaobject != null;
 }
