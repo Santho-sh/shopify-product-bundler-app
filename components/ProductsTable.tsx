@@ -10,6 +10,8 @@ import {
 import { useState, useEffect } from "react";
 import useFetch from "./hooks/useFetch";
 import { GetBundlesData } from "@/utils/shopifyQueries/getBundles";
+import { Redirect } from "@shopify/app-bridge/actions";
+import { useAppBridge } from "@shopify/app-bridge-react";
 
 export type Fieldvalues = {
   bundle_name?: string;
@@ -23,6 +25,8 @@ export type Fieldvalues = {
 
 export default function ProductsTable() {
   const fetch = useFetch();
+  const app = useAppBridge();
+  const redirect = Redirect.create(app);
 
   const [bundles, setBundles] = useState([]);
   const [hasPreviousPage, setHasPreviousPage] = useState(false);
@@ -119,12 +123,15 @@ export default function ProductsTable() {
         <IndexTable.Cell>
           <Button
             onClick={() => {
-              console.log("edit clicked");
+              redirect.dispatch(
+                Redirect.Action.APP,
+                `/edit_bundle?id=${encodeURIComponent(id)}`
+              );
             }}
             plain
             destructive
           >
-            Edit
+            View/Edit
           </Button>
         </IndexTable.Cell>
       </IndexTable.Row>
@@ -182,12 +189,9 @@ export default function ProductsTable() {
           }}
         />
         {selectedResources.length > 0 ? (
-          <Button onClick={() => deleteBundle()} destructive>
+          <Button onClick={() => deleteBundle()} destructive loading={deleting}>
             Delete
           </Button>
-        ) : null}
-        {deleting ? (
-          <Spinner accessibilityLabel="Small spinner example" size="small" />
         ) : null}
       </div>
     </>

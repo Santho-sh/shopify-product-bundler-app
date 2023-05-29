@@ -54,7 +54,7 @@ const CreateBundlePage = () => {
       method: "POST",
       body: JSON.stringify(data),
     });
-    if (response) {
+    if (response.status == 200) {
       setBundleName("Bundle discount");
       setBundleTitle("Get a discount!");
       setDescription("Buy these products together and get a discount!");
@@ -218,12 +218,10 @@ const CreateBundlePage = () => {
                   primary
                   submit
                   disabled={selectedProducts.length == 0 ? true : false}
+                  loading={loading}
                 >
                   Save bundle
                 </Button>
-                {loading ? (
-                  <Spinner accessibilityLabel="Spinner example" size="large" />
-                ) : null}
               </div>
             </FormLayout>
           </Form>
