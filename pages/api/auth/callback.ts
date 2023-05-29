@@ -1,5 +1,5 @@
 import prisma from "@/utils/prisma";
-import { createBundleDefinition } from "@/utils/productBundles";
+import { createBundleDefinition } from "@/utils/shopifyQueries/createBundleDefinition";
 import sessionHandler from "@/utils/sessionHandler";
 import shopify from "@/utils/shopify";
 
