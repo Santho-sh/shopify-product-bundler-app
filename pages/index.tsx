@@ -14,10 +14,10 @@ const HomePage = () => {
       secondaryActions={
         <Button
           onClick={() => {
-            redirect.dispatch(Redirect.Action.APP, "/settings");
+            redirect.dispatch(Redirect.Action.APP, "/auto_bundle");
           }}
         >
-          Settings
+          Auto Bundle Generation
         </Button>
       }
       primaryAction={{

@@ -94,23 +94,6 @@ const CreateBundlePage = () => {
     />
   ) : null;
 
-  const handleBundleNameChange = useCallback(
-    (value: string) => setBundleName(value),
-    []
-  );
-  const handleDiscountChange = useCallback(
-    (value: string) => setDiscount(value),
-    []
-  );
-  const handleTitleChange = useCallback(
-    (value: string) => setBundleTitle(value),
-    []
-  );
-  const handleDescriptionChange = useCallback(
-    (value: string) => setDescription(value),
-    []
-  );
-
   return (
     <Page
       title="Create Bundle"
@@ -126,7 +109,9 @@ const CreateBundlePage = () => {
                 <LegacyCard.Section>
                   <TextField
                     value={bundleName}
-                    onChange={handleBundleNameChange}
+                    onChange={(value) => {
+                      setBundleName(value);
+                    }}
                     label="Bundle Name"
                     helpText="Bundle name will be visible on invoices."
                     type="text"
@@ -137,7 +122,9 @@ const CreateBundlePage = () => {
                 <LegacyCard.Section>
                   <TextField
                     value={bundleTitle}
-                    onChange={handleTitleChange}
+                    onChange={(value) => {
+                      setBundleTitle(value);
+                    }}
                     label="Title"
                     helpText="Title will be displayed on product pages."
                     type="text"
@@ -148,7 +135,9 @@ const CreateBundlePage = () => {
                 <LegacyCard.Section>
                   <TextField
                     value={description}
-                    onChange={handleDescriptionChange}
+                    onChange={(value) => {
+                      setDescription(value);
+                    }}
                     label="Description"
                     helpText="Description will be displayed on product pages under bundle title."
                     type="text"
@@ -158,13 +147,16 @@ const CreateBundlePage = () => {
                 <LegacyCard.Section>
                   <TextField
                     value={discount}
-                    onChange={handleDiscountChange}
+                    onChange={(value) => {
+                      setDiscount(value);
+                    }}
                     label="Percentage discount"
                     helpText="Set the percentage discount which will be applied to each product in the bundle. You can set it to 0% if you want to create a bundle without a discount."
                     type="number"
                     suffix="%"
                     autoComplete="10"
                     max={100}
+                    min={0}
                   />
                 </LegacyCard.Section>
               </LegacyCard>
