@@ -12,7 +12,6 @@ import {
   Layout,
   LegacyCard,
   Page,
-  Spinner,
   Text,
   TextField,
 } from "@shopify/polaris";

@@ -5,7 +5,6 @@ import {
   Text,
   Pagination,
   Button,
-  Spinner,
 } from "@shopify/polaris";
 import { useState, useEffect } from "react";
 import useFetch from "./hooks/useFetch";
@@ -138,23 +137,6 @@ export default function ProductsTable() {
     )
   );
 
-  // while getting bundles showing spinner
-  if (gettingBundles) {
-    return (
-      <div
-        style={{
-          height: "20rem",
-          width: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <Spinner accessibilityLabel="Spinner example" size="large" />
-      </div>
-    );
-  }
-
   return (
     <>
       <LegacyCard>
@@ -165,6 +147,7 @@ export default function ProductsTable() {
             allResourcesSelected ? "All" : selectedResources.length
           }
           onSelectionChange={handleSelectionChange}
+          loading={gettingBundles}
           headings={[
             { title: "Bundle Name" },
             { title: "Discount" },

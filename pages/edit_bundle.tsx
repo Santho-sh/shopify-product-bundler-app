@@ -1,14 +1,9 @@
 import isShopAvailable from "@/utils/middleware/isShopAvailable";
-import { ResourcePicker, Toast, useAppBridge } from "@shopify/app-bridge-react";
+import { Toast, useAppBridge } from "@shopify/app-bridge-react";
 import { Redirect } from "@shopify/app-bridge/actions";
 import {
-  Product,
-  ProductVariant,
-} from "@shopify/app-bridge/actions/ResourcePicker";
-
-import {
-  Banner,
   Button,
+  DataTable,
   Form,
   FormLayout,
   IndexTable,
@@ -24,7 +19,6 @@ import React from "react";
 import useFetch from "@/components/hooks/useFetch";
 import { useRouter } from "next/router";
 import { NextPage } from "next";
-import { BundleData } from "@/utils/shopifyQueries/createBundle";
 import { EditedBundleData } from "@/utils/shopifyQueries/editBundle";
 
 export type Fieldvalues = {
@@ -98,7 +92,7 @@ const CreateBundlePage: NextPage = () => {
       setBundleTitle(values.bundle_title);
       setDescription(values.description);
       setDiscount(values.discount);
-      let products: ProductData[] = [];
+      let productsData: ProductData[] = [];
       // Getting products data
       await JSON.parse(values.products).map(async (productId: string) => {
         let data: GetProductData = await fetch("/api/getProduct", {
@@ -107,7 +101,7 @@ const CreateBundlePage: NextPage = () => {
             id: productId,
           }),
         }).then(async (res) => JSON.parse(await res.json()));
-        products.push({
+        productsData.push({
           id: data.id,
           name: data.title,
           price: data.priceRangeV2.maxVariantPrice.amount,
@@ -116,7 +110,7 @@ const CreateBundlePage: NextPage = () => {
           totalPrice + parseFloat(data.priceRangeV2.maxVariantPrice.amount)
         );
       });
-      setProducts(products);
+      setProducts(productsData);
       setGettingBundle(false);
     } catch (e) {
       redirect.dispatch(Redirect.Action.APP, "/");
@@ -149,16 +143,10 @@ const CreateBundlePage: NextPage = () => {
     }
     setLoading(false);
   }
-  const rowMarkup = products.map(({ id, name, price }, index) => (
-    <IndexTable.Row id={id} key={id} position={index}>
-      <IndexTable.Cell>
-        <Text variant="bodyMd" fontWeight="bold" as="span">
-          {name}
-        </Text>
-      </IndexTable.Cell>
-      <IndexTable.Cell>{price}</IndexTable.Cell>
-    </IndexTable.Row>
-  ));
+
+  const rows = products.map((product) => {
+    return [product.name, product.price];
+  });
 
   // success/error toast messages
   const [successToastActive, setSuccessToastActive] = useState(false);
@@ -211,7 +199,7 @@ const CreateBundlePage: NextPage = () => {
     return (
       <div
         style={{
-          height: "100%",
+          height: "20rem",
           width: "100%",
           display: "flex",
           alignItems: "center",
@@ -281,13 +269,12 @@ const CreateBundlePage: NextPage = () => {
                 </LegacyCard.Section>
               </LegacyCard>
               <LegacyCard title="Products in bundle" sectioned>
-                <IndexTable
-                  itemCount={products.length}
-                  headings={[{ title: "Product" }, { title: "Price" }]}
-                  selectable={false}
-                >
-                  {rowMarkup}
-                </IndexTable>
+                <DataTable
+                  showTotalsInFooter
+                  columnContentTypes={["text", "text"]}
+                  headings={["Product", "Price"]}
+                  rows={rows}
+                />
               </LegacyCard>
               <div
                 style={{ display: "flex", gap: "1rem", paddingBottom: "1rem" }}
