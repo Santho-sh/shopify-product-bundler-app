@@ -1,13 +1,7 @@
 import isShopAvailable from "@/utils/middleware/isShopAvailable";
-import { ResourcePicker, Toast, useAppBridge } from "@shopify/app-bridge-react";
+import { Toast, useAppBridge } from "@shopify/app-bridge-react";
 import { Redirect } from "@shopify/app-bridge/actions";
 import {
-  Product,
-  ProductVariant,
-} from "@shopify/app-bridge/actions/ResourcePicker";
-
-import {
-  Banner,
   Button,
   Form,
   FormLayout,
@@ -24,7 +18,6 @@ import React from "react";
 import useFetch from "@/components/hooks/useFetch";
 import { useRouter } from "next/router";
 import { NextPage } from "next";
-import { BundleData } from "@/utils/shopifyQueries/createBundle";
 import { EditedBundleData } from "@/utils/shopifyQueries/editBundle";
 
 export type Fieldvalues = {
@@ -77,7 +70,6 @@ const CreateBundlePage: NextPage = () => {
   const [products, setProducts] = useState<ProductData[]>([]);
   const [loading, setLoading] = useState(false);
   const [gettingBundle, setGettingBundle] = useState(false);
-  const [totalPrice, setTotalPrice] = useState(0);
 
   // Geting Bundle data
   async function getBundle(id) {
@@ -112,9 +104,6 @@ const CreateBundlePage: NextPage = () => {
           name: data.title,
           price: data.priceRangeV2.maxVariantPrice.amount,
         });
-        setTotalPrice(
-          totalPrice + parseFloat(data.priceRangeV2.maxVariantPrice.amount)
-        );
       });
       setProducts(products);
       setGettingBundle(false);
@@ -211,7 +200,7 @@ const CreateBundlePage: NextPage = () => {
     return (
       <div
         style={{
-          height: "100%",
+          height: "20rem",
           width: "100%",
           display: "flex",
           alignItems: "center",
