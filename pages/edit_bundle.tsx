@@ -71,7 +71,6 @@ const CreateBundlePage: NextPage = () => {
   const [products, setProducts] = useState<ProductData[]>([]);
   const [loading, setLoading] = useState(false);
   const [gettingBundle, setGettingBundle] = useState(false);
-  const [totalPrice, setTotalPrice] = useState(0);
 
   // Geting Bundle data
   async function getBundle(id) {
@@ -106,9 +105,6 @@ const CreateBundlePage: NextPage = () => {
           name: data.title,
           price: data.priceRangeV2.maxVariantPrice.amount,
         });
-        setTotalPrice(
-          totalPrice + parseFloat(data.priceRangeV2.maxVariantPrice.amount)
-        );
       });
       setProducts(productsData);
       setGettingBundle(false);
