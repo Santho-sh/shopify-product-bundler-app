@@ -20,3 +20,12 @@ model session {
   content String? //MySQL requires adding @db.Text
   shop    String?
 }
+
+model auto_bundle_data {
+  shop        String   @id
+  collections String[] //MySQL requires adding @db.Text
+  tags        String[]
+  minPrice    String
+  maxPrice    String
+  discount    String
+}
