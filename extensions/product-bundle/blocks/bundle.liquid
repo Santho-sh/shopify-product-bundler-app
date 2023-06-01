@@ -1,0 +1,43 @@
+{% assign handle = 'product-bundles-mfrw3rzn' %}
+{% assign type = 'product-bundles' %}
+{% assign bundle = shop.metaobjects[type][handle] %}
+
+{{ 'style.css' | asset_url | stylesheet_tag }}
+
+<div class="bundle">
+  <p class="bundle-name">{{ bundle.bundle_name }}</p>
+  <p class="bundle-title">{{ bundle.bundle_title }}</p>
+  <p class="bundle-description">{{ bundle.description }}</p>
+  <p class="discounted-price">{{ bundle.discount }}% Discount</p>
+
+  <div class="products">
+    {% for product in bundle.products.value %}
+      <div class="product">
+        <img
+          class="product-image"
+          src="{{ product.featured_image | image_url: width: 200, height: 200 }}"
+          alt="{{ product.featured_image.alt }}"
+          loading="lazy"
+          height="200"
+          width="200"
+        >
+        <p class="product-name">{{ product.title }}</p>
+        <p class="product-price">{{ product.price | money }}</p>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="add-to-cart-button">
+    <p class="discounted-price">
+      <span class="original-price">$2500</span> $2000 only
+    </p>
+    <button>Add To Cart</button>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product Bundle",
+  "target": "section"
+}
+{% endschema %}

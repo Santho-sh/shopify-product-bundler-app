@@ -24,7 +24,6 @@ const handler: NextApiHandler = async (req, res) => {
       return res.status(404).send("message: Automatic bundle data is empty");
     } else {
       const autoBundleDataObj = JSON.stringify(autoBundleData);
-      console.log(autoBundleDataObj);
       return res.status(200).json(autoBundleDataObj);
     }
   } catch (error) {
