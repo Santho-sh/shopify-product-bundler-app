@@ -1,67 +1,71 @@
 .bundle {
-    font-family: inherit;
-    text-align: center;
-  }
+  box-sizing: border-box;
+  font-family: inherit;
+  text-align: center;
+}
 
-  .bundle-name {
-    font-size: 30px;
-    font-weight: 700;
-    margin: 15px;
-  }
+.bundle-name {
+  font-size: 30px;
+  font-weight: 700;
+  margin: 15px;
+}
 
-  .bundle-title {
-    font-size: 20px;
-    padding: 0;
-  }
+.bundle-title {
+  font-size: 20px;
+  padding: 0;
+}
 
-  .products {
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
+.products {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
 
-  .product {
-    display: "flex";
-    flex-direction: "column";
-    gap: 0.5rem;
-  }
+.product {
+  display: "flex";
+  flex-direction: "column";
+  gap: 0.5rem;
+}
 
-  .product-name {
-    text-align: center;
-    width: 100px;
-    word-wrap: normal;
-  }
-  .product-price {
-    text-align: center;
-  }
+.product-name {
+  text-align: center;
+  width: 100px;
+  color: black;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.product-price {
+  text-align: center;
+}
 
-  .add-to-cart-button {
-    width: 100%;
-    padding: 1rem;
-  }
-  .add-to-cart-button button {
-    background-color: black;
-    color: #fff;
-    margin-bottom: 1rem;
-    padding: 1.5rem 2rem;
-    border: none;
-    border-radius: 3px;
-    font-size: medium;
-  }
-  .discount {
-    font-size: 25px;
-    margin: 15px;
-  }
+.add-to-cart-button {
+  width: 100%;
+  padding: 1rem;
+}
+.add-to-cart-button button {
+  background-color: black;
+  color: #fff;
+  margin-bottom: 1rem;
+  padding: 1.5rem 2rem;
+  border: none;
+  border-radius: 3px;
+  font-size: medium;
+}
+.discount {
+  font-size: 25px;
+  margin: 15px;
+}
 
-  .original-price {
-    text-decoration: line-through;
-  }
+.original-price {
+  text-decoration: line-through;
+}
 
-  .discounted-price {
-    font-size: 25px;
-    font-weight: 600;
-    margin: 10px;
-  }
+.discounted-price {
+  font-size: 25px;
+  font-weight: 600;
+  margin: 10px;
+}
