@@ -50,6 +50,14 @@ export async function createBundleDefinition(client: GraphqlClient) {
           name: "Product Bundles",
           type: "product-bundles",
           description: "Products Bundles",
+          access: {
+            storefront: "PUBLIC_READ",
+          },
+          capabilities: {
+            publishable: {
+              enabled: true,
+            },
+          },
           fieldDefinitions: [
             {
               name: "Bundle Name",
@@ -99,13 +107,6 @@ export async function createBundleDefinition(client: GraphqlClient) {
               description: "Products in the Bundle",
               required: true,
               type: "list.product_reference",
-            },
-            {
-              name: "Products Quantities",
-              key: "products_quantities",
-              description: "Products Quantities in the Bundle",
-              required: true,
-              type: "list.number_integer",
             },
           ],
         },

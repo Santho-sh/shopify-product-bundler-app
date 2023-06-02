@@ -46,7 +46,6 @@ const CreateBundlePage = () => {
       products: selectedProducts.map((products) => {
         return products.id;
       }),
-      productsQuantities: [1],
     };
 
     let response = await fetch("/api/createBundle", {

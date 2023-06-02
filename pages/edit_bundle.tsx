@@ -6,12 +6,10 @@ import {
   DataTable,
   Form,
   FormLayout,
-  IndexTable,
   Layout,
   LegacyCard,
   Page,
   Spinner,
-  Text,
   TextField,
 } from "@shopify/polaris";
 import { useCallback, useState, useEffect } from "react";
@@ -28,7 +26,6 @@ export type Fieldvalues = {
   description?: string;
   discount?: string;
   products?: string;
-  products_quantities?: string;
 };
 
 export type GetBundleData = {
