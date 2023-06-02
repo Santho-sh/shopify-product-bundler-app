@@ -9,6 +9,7 @@ export type GetBundlesData = {
   edges: Array<{
     node: {
       id: string;
+      handle: string;
       fields: Array<{
         key: string;
         value: string;
@@ -22,6 +23,7 @@ export type GetBundlesData = {
     hasPreviousPage: boolean;
   };
 };
+
 export async function getBundles(
   client: GraphqlClient,
   after: boolean,
@@ -37,6 +39,7 @@ export async function getBundles(
             edges {
               node {
                 id
+                handle
                 fields {
                   key
                   value
@@ -62,6 +65,7 @@ export async function getBundles(
             edges {
               node {  
                 id
+                handle
                 fields {
                   key
                   value
@@ -88,6 +92,7 @@ export async function getBundles(
           edges {
             node {  
               id
+              handle
               fields {
                 key
                 value

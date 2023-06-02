@@ -76,6 +76,7 @@ export default function ProductsTable() {
       let values = arrayToObject(node.fields);
       return {
         id: node.id,
+        handle: node.handle,
         name: values.bundle_name,
         title: values.bundle_title,
         created: new Date(values.created_at).toDateString(),
@@ -104,7 +105,7 @@ export default function ProductsTable() {
     useIndexResourceState(bundles);
 
   const rowMarkup = bundles.map(
-    ({ id, name, title, created, discount }, index) => (
+    ({ id, handle, name, title, created, discount }, index) => (
       <IndexTable.Row
         id={id}
         key={id}
@@ -115,6 +116,16 @@ export default function ProductsTable() {
           <Text variant="bodyMd" fontWeight="bold" as="span">
             {name}
           </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Button
+            onClick={() => {
+              navigator.clipboard.writeText(handle);
+            }}
+            plain
+          >
+            Copy
+          </Button>
         </IndexTable.Cell>
         <IndexTable.Cell>{discount}</IndexTable.Cell>
         <IndexTable.Cell>{created}</IndexTable.Cell>
@@ -150,6 +161,7 @@ export default function ProductsTable() {
           loading={gettingBundles}
           headings={[
             { title: "Bundle Name" },
+            { title: "Shortcode" },
             { title: "Discount" },
             { title: "Created" },
             { title: "Title" },
