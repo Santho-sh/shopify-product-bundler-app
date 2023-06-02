@@ -4,15 +4,10 @@
   text-align: center;
 }
 
-.bundle-name {
+.bundle-title {
   font-size: 30px;
   font-weight: 700;
   margin: 15px;
-}
-
-.bundle-title {
-  font-size: 20px;
-  padding: 0;
 }
 
 .products {
@@ -65,7 +60,7 @@
 }
 
 .discounted-price {
-  font-size: 25px;
+  font-size: 19px;
   font-weight: 600;
   margin: 10px;
 }

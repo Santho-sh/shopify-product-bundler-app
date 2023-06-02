@@ -1,11 +1,9 @@
 {% assign type = 'product-bundles' %}
 {% assign bundle = shop.metaobjects[type][block.settings.shortcode] %}
-
-{{ 'style.css' | asset_url | stylesheet_tag }}
+{% assign price = 0 %}
 
 {% if bundle %}
   <div class="bundle">
-    <p class="bundle-name">{{ bundle.bundle_name }}</p>
     <p class="bundle-title">{{ bundle.bundle_title }}</p>
     <p class="bundle-description">{{ bundle.description }}</p>
     <p class="discounted-price">{{ bundle.discount }}% Discount</p>
@@ -27,17 +25,31 @@
             <p>{{ product.title }}</p>
           </a>
           <p class="product-price">{{ product.price | money }}</p>
+          {% assign price = price | plus: product.price %}
         </div>
       {% endfor %}
     </div>
 
-    {{  }}
+    {% assign discountedPrice = price
+      | divided_by: 100
+      | times: bundle.discount
+    %}
 
     <div class="add-to-cart-button">
       <p class="discounted-price">
-        <span class="original-price">$2500</span> $2000 only
+        <span class="original-price">{{ price | money }}</span>
+        {{ price | minus: discountedPrice | money }} Only
       </p>
-      <button>Buy Now</button>
+      <form action="/cart/add" method="post">
+        {% for product in bundle.products.value %}
+          <input
+            type="hidden"
+            name="id[]"
+            value="{{ product.variants.first.id }}"
+          >
+        {% endfor %}
+        <button type="submit">Buy Now</button>
+      </form>
     </div>
   </div>
 {% endif %}
@@ -46,6 +58,8 @@
 {
   "name": "Product Bundle",
   "target": "section",
+  "stylesheet": "style.css",
+  "templates": ["index"],
   "settings": [
     {
       "type": "text",
