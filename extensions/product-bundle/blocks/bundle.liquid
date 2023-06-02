@@ -2,8 +2,6 @@
 {% assign bundle = shop.metaobjects[type][block.settings.shortcode] %}
 {% assign price = 0 %}
 
-{{ 'style.css' | asset_url | stylesheet_tag }}
-
 {% if bundle %}
   <div class="bundle">
     <p class="bundle-title">{{ bundle.bundle_title }}</p>
