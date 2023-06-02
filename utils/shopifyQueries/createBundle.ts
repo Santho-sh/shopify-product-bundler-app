@@ -6,7 +6,6 @@ export interface BundleData {
   description: string;
   discount: string;
   products: Array<string>;
-  productsQuantities: Array<number>;
 }
 
 export interface BundleCreateQuery {
@@ -48,6 +47,11 @@ export async function createBundle(client: GraphqlClient, data: BundleData) {
       variables: {
         metaobject: {
           type: "product-bundles",
+          capabilities: {
+            publishable: {
+              status: "ACTIVE",
+            },
+          },
           fields: [
             {
               key: "bundle_name",
@@ -72,10 +76,6 @@ export async function createBundle(client: GraphqlClient, data: BundleData) {
             {
               key: "products",
               value: JSON.stringify(data.products),
-            },
-            {
-              key: "products_quantities",
-              value: JSON.stringify(data.productsQuantities),
             },
           ],
         },
