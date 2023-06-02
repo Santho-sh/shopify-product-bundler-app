@@ -1,11 +1,11 @@
 {% assign type = 'product-bundles' %}
 {% assign bundle = shop.metaobjects[type][block.settings.shortcode] %}
+{% assign price = 0 %}
 
 {{ 'style.css' | asset_url | stylesheet_tag }}
 
 {% if bundle %}
   <div class="bundle">
-    <p class="bundle-name">{{ bundle.bundle_name }}</p>
     <p class="bundle-title">{{ bundle.bundle_title }}</p>
     <p class="bundle-description">{{ bundle.description }}</p>
     <p class="discounted-price">{{ bundle.discount }}% Discount</p>
@@ -27,15 +27,20 @@
             <p>{{ product.title }}</p>
           </a>
           <p class="product-price">{{ product.price | money }}</p>
+          {% assign price = price | plus: product.price %}
         </div>
       {% endfor %}
     </div>
 
-    {{  }}
+    {% assign discountedPrice = price
+      | divided_by: 100
+      | times: bundle.discount
+    %}
 
     <div class="add-to-cart-button">
       <p class="discounted-price">
-        <span class="original-price">$2500</span> $2000 only
+        <span class="original-price">{{ price | money }}</span>
+        {{ price | minus: discountedPrice | money }} Only
       </p>
       <button>Buy Now</button>
     </div>
