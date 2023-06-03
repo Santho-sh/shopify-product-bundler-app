@@ -1,8 +1,9 @@
 import withMiddleware from "@/utils/middleware/withMiddleware";
 import clientProvider from "@/utils/clientProvider";
 import { NextApiHandler } from "next";
-import { editBundle } from "@/utils/shopifyQueries";
+import { discountUpdate, editBundle } from "@/utils/shopifyQueries";
 import { EditedBundleData } from "@/utils/shopifyQueries/editBundle";
+import prisma from "@/utils/prisma";
 
 const handler: NextApiHandler = async (req, res) => {
   //Reject anything that's not a POST
@@ -17,9 +18,19 @@ const handler: NextApiHandler = async (req, res) => {
   });
 
   try {
+    // update bundle data
     const data: EditedBundleData = JSON.parse(req.body);
     const resposne: boolean = await editBundle(client, data);
     if (resposne) {
+      // get discount Id
+      const discountData = await prisma.bundle_discount_id.findUnique({
+        where: {
+          bundleId: data.id,
+        },
+      });
+      // update discount percentage in Discounts
+      await discountUpdate(client, discountData.discountId, data.discount);
+
       return res.status(200).send("message: Bundle saved successfully");
     }
     return res.status(400).send("message: Bad request");

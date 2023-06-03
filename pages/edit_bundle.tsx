@@ -258,6 +258,7 @@ const CreateBundlePage: NextPage = () => {
                     suffix="%"
                     autoComplete="10"
                     max={100}
+                    min={0}
                   />
                 </LegacyCard.Section>
               </LegacyCard>
