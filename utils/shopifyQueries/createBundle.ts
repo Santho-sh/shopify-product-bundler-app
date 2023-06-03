@@ -12,6 +12,8 @@ export interface BundleCreateQuery {
   data: {
     metaobjectCreate: {
       metaobject?: {
+        handle: string;
+        id: string;
         fields: Array<{
           key: string;
           value: string;
@@ -32,7 +34,9 @@ export async function createBundle(client: GraphqlClient, data: BundleData) {
       query: `mutation CreateMetaobject($metaobject: MetaobjectCreateInput!) {
             metaobjectCreate(metaobject: $metaobject) {
               metaobject {
-                 fields {
+                handle
+                id
+                fields {
                   key
                   value
                 }
@@ -82,6 +86,18 @@ export async function createBundle(client: GraphqlClient, data: BundleData) {
       },
     },
   });
+  // Get a discount code using handle of the bundle
+  if (body.data?.metaobjectCreate.metaobject != null) {
+    let handle = body.data?.metaobjectCreate.metaobject.handle;
+    let code = handle.split("-").pop().toUpperCase();
+    let discountTitle = `${code}`;
+    console.log(discountTitle);
 
-  return body.data?.metaobjectCreate.metaobject != null;
+    return {
+      bundleId: body.data.metaobjectCreate.metaobject.id,
+      discountTitle: discountTitle,
+    };
+  } else {
+    return null;
+  }
 }

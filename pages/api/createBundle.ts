@@ -1,7 +1,8 @@
 import withMiddleware from "@/utils/middleware/withMiddleware";
 import clientProvider from "@/utils/clientProvider";
 import { NextApiHandler } from "next";
-import { createBundle } from "@/utils/shopifyQueries";
+import { createBundle, discountCreate } from "@/utils/shopifyQueries";
+import prisma from "@/utils/prisma";
 
 const handler: NextApiHandler = async (req, res) => {
   //Reject anything that's not a POST
@@ -17,8 +18,22 @@ const handler: NextApiHandler = async (req, res) => {
 
   try {
     const data = JSON.parse(req.body);
-    const resposne: boolean = await createBundle(client, data);
-    if (resposne) {
+    const response = await createBundle(client, data);
+    if (response != null) {
+      const discountId = await discountCreate(client, {
+        title: response.discountTitle,
+        discount: data.discount,
+        products: data.products,
+      });
+
+      await prisma.bundle_discount_id.create({
+        data: {
+          bundleId: response.bundleId,
+          discountId: discountId,
+          shop: shop,
+        },
+      });
+
       return res.status(200).send("message: Bundle created successfully");
     }
     return res.status(400).send("message: Bad request");

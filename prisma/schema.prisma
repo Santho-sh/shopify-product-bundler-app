@@ -21,6 +21,7 @@ model session {
   shop    String?
 }
 
+// Automatic bundle generation data
 model auto_bundle_data {
   shop        String   @id
   collections String[] //MySQL requires adding @db.Text
@@ -29,4 +30,11 @@ model auto_bundle_data {
   maxPrice    String
   minProducts String
   discount    String
+}
+
+// Discount id for the bundle
+model bundle_discount_id {
+  bundleId   String @id
+  discountId String
+  shop       String
 }
