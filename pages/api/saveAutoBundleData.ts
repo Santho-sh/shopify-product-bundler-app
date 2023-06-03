@@ -25,6 +25,7 @@ const handler: NextApiHandler = async (req, res) => {
         tags: data.tags,
         minPrice: data.minPrice,
         maxPrice: data.maxPrice,
+        minProducts: data.minProducts,
         discount: data.discount,
       },
       create: {
@@ -33,6 +34,7 @@ const handler: NextApiHandler = async (req, res) => {
         tags: data.tags,
         minPrice: data.minPrice,
         maxPrice: data.maxPrice,
+        minProducts: data.minProducts,
         discount: data.discount,
       },
     });

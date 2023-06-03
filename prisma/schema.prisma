@@ -27,5 +27,6 @@ model auto_bundle_data {
   tags        String[]
   minPrice    String
   maxPrice    String
+  minProducts String
   discount    String
 }

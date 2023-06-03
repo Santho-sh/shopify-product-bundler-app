@@ -31,6 +31,7 @@ export type getAutoBundleata = {
   discount: string;
   maxPrice: string;
   minPrice: string;
+  minProducts: string;
   shop: string;
   tags: Array<string>;
 };
@@ -50,6 +51,7 @@ const AutoBundlePage = () => {
   const [maxPrice, setMaxPrice] = useState("0");
 
   const [discount, setDiscount] = useState("0");
+  const [minProducts, setMinProducts] = useState("2");
 
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
@@ -63,6 +65,7 @@ const AutoBundlePage = () => {
       tags: selectedTags,
       minPrice: minPrice,
       maxPrice: maxPrice,
+      minProducts: minProducts,
       discount: discount,
     };
 
@@ -241,6 +244,20 @@ const AutoBundlePage = () => {
                     autoComplete="10"
                     min={0}
                     max={100}
+                  />
+                </LegacyCard.Section>
+                <LegacyCard.Section>
+                  <TextField
+                    value={minProducts}
+                    onChange={(value) => {
+                      setMinProducts(value);
+                    }}
+                    label="Minimum products to buy"
+                    helpText="Minimum number of products customer need to buy to get a discount"
+                    type="number"
+                    autoComplete="10"
+                    min={0}
+                    max={20}
                   />
                 </LegacyCard.Section>
               </LegacyCard>
