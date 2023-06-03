@@ -91,7 +91,6 @@ export async function createBundle(client: GraphqlClient, data: BundleData) {
     let handle = body.data?.metaobjectCreate.metaobject.handle;
     let code = handle.split("-").pop().toUpperCase();
     let discountTitle = `${code}`;
-    console.log(discountTitle);
 
     return {
       bundleId: body.data.metaobjectCreate.metaobject.id,
