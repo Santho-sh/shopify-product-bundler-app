@@ -10,6 +10,7 @@ import { getProductTags } from "./getProductTags";
 import { discountCreate } from "./discountCreate";
 import { discountDelete } from "./discountDelete";
 import { discountUpdate } from "./discountUpdate";
+import { getProductsByCollection } from "./getProductsByCollection";
 
 export {
   createBundleDefinition,
@@ -24,4 +25,5 @@ export {
   discountCreate,
   discountDelete,
   discountUpdate,
+  getProductsByCollection,
 };

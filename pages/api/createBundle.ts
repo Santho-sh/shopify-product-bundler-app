@@ -24,6 +24,7 @@ const handler: NextApiHandler = async (req, res) => {
         title: response.discountTitle,
         discount: data.discount,
         products: data.products,
+        minProducts: data.products.length.toString(),
       });
 
       await prisma.bundle_discount_id.create({

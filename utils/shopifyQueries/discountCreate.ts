@@ -5,6 +5,7 @@ export interface BundleDiscountData {
   title: string;
   discount: string;
   products: Array<string>;
+  minProducts: string;
 }
 
 // Discount create return data type
@@ -53,7 +54,7 @@ export async function discountCreate(
           },
           minimumRequirement: {
             quantity: {
-              greaterThanOrEqualToQuantity: data.products.length.toString(),
+              greaterThanOrEqualToQuantity: data.minProducts,
             },
           },
           title: data.title,

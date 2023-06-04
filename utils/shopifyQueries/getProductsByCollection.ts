@@ -1,19 +1,34 @@
 import { GraphqlClient } from "@shopify/shopify-api/lib/clients/graphql/graphql_client";
 
-export type GetBundleQuery = {
+export type GetByCollectionQuery = {
   data: {
-    metaobject: {
-      id: string;
-      fields: Array<{
-        key: string;
-        value: string;
+    collections: {
+      edges: Array<{
+        node: {
+          products: {
+            edges: Array<{
+              node: {
+                id: string;
+                tags: Array<string>;
+                priceRangeV2: {
+                  maxVariantPrice: {
+                    amount: string;
+                  };
+                };
+              };
+            }>;
+          };
+        };
       }>;
     };
   };
 };
 
-export async function getBundle(client: GraphqlClient, collection: string) {
-  const { body } = await client.query<GetBundleQuery>({
+export async function getProductsByCollection(
+  client: GraphqlClient,
+  collection: string
+) {
+  const { body } = await client.query<GetByCollectionQuery>({
     data: {
       query: `query ($collection:String!){
         collections(first: 1, query: $collection) {
@@ -22,10 +37,10 @@ export async function getBundle(client: GraphqlClient, collection: string) {
               products(first: 200) {
                 edges {
                   node {
-                    title
+                    id
                     tags
                     priceRangeV2 {
-                      minVariantPrice {
+                      maxVariantPrice {
                         amount
                       }
                     }
@@ -41,5 +56,5 @@ export async function getBundle(client: GraphqlClient, collection: string) {
       },
     },
   });
-  return body.data?.metaobject;
+  return body.data?.collections.edges;
 }

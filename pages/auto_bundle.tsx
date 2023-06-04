@@ -62,6 +62,7 @@ const AutoBundlePage = () => {
 
     const data = {
       collections: selectedCollections,
+      allCollections: collections,
       tags: selectedTags,
       minPrice: minPrice,
       maxPrice: maxPrice,
