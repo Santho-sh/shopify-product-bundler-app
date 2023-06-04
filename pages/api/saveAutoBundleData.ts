@@ -110,9 +110,7 @@ const handler: NextApiHandler = async (req, res) => {
     // Delete the old discount if exists
     if (discountData !== null) {
       let discountId = discountData.discountId;
-      let ids = [];
-      ids.push(discountId);
-      await discountDelete(client, ids);
+      await discountDelete(client, [discountId]);
     }
 
     // If autobundle products is grater than 0 then create new discount and update database
@@ -152,7 +150,7 @@ function isHaveRequiredTags(requiredTags: string[], productTags: string[]) {
   if (requiredTags.length == 0) {
     return true;
   }
-  for (let requiredTag in requiredTags) {
+  for (let requiredTag of requiredTags) {
     if (productTags.includes(requiredTag)) {
       return true;
     }

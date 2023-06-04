@@ -3,6 +3,7 @@ import { Toast, useAppBridge } from "@shopify/app-bridge-react";
 import { Redirect } from "@shopify/app-bridge/actions";
 
 import {
+  Badge,
   Button,
   Form,
   FormLayout,
@@ -41,6 +42,10 @@ const AutoBundlePage = () => {
   const redirect = Redirect.create(app);
   const fetch = useFetch();
 
+  true;
+  // Already an auto bundle is active or not
+  const [bundleActice, setBundleActice] = useState(false);
+
   const [productTags, setProductTags] = useState([]);
   const [selectedTags, setSelectedTags] = useState([]);
 
@@ -50,19 +55,24 @@ const AutoBundlePage = () => {
   const [minPrice, setMinPrice] = useState("0");
   const [maxPrice, setMaxPrice] = useState("0");
 
-  const [discount, setDiscount] = useState("0");
+  const [discount, setDiscount] = useState("10");
   const [minProducts, setMinProducts] = useState("2");
 
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
+  const [deleting, setDeleting] = useState(false);
 
   // Submit Form: Save auto bundle data Bundle
   async function handleSubmit() {
     setSaving(true);
 
+    let allcollections = collections.map((collection) => {
+      return collection.node.title;
+    });
+
     const data = {
       collections: selectedCollections,
-      allCollections: collections,
+      allCollections: allcollections,
       tags: selectedTags,
       minPrice: minPrice,
       maxPrice: maxPrice,
@@ -77,6 +87,7 @@ const AutoBundlePage = () => {
 
     if (response.status == 200) {
       toggleSuccessToastActive();
+      setBundleActice(true);
     } else {
       toggleErrorToastActive();
     }
@@ -93,10 +104,11 @@ const AutoBundlePage = () => {
       method: "POST",
     }).then(async (res) => JSON.parse(await res.json()));
 
-    fetch("/api/getAutoBundleData", {
+    await fetch("/api/getAutoBundleData", {
       method: "POST",
     }).then(async (res) => {
       if (res.status == 200) {
+        setBundleActice(true);
         const data: getAutoBundleata = JSON.parse(await res.json());
         setSelectedCollections(data.collections);
         setSelectedTags(data.tags);
@@ -115,6 +127,17 @@ const AutoBundlePage = () => {
     getData();
   }, []);
 
+  // delete auto bundle
+  async function deleteAutoBundle() {
+    setDeleting(true);
+    await fetch("/api/deleteAutoBundle", {
+      method: "POST",
+    });
+    toggleDeleteSuccessToast();
+    setDeleting(false);
+    setBundleActice(false);
+  }
+
   let collectionsOptions = collections.map((collection) => {
     return {
       value: collection.node.title,
@@ -132,6 +155,8 @@ const AutoBundlePage = () => {
   // success/error toast messages
   const [successToastActive, setSuccessToastActive] = useState(false);
   const [errorToastActive, setErrorToastActive] = useState(false);
+  const [deleteSuccessToastActive, setDeleteSuccessToastActive] =
+    useState(false);
 
   const toggleSuccessToastActive = useCallback(
     () => setSuccessToastActive((active) => !active),
@@ -139,6 +164,10 @@ const AutoBundlePage = () => {
   );
   const toggleErrorToastActive = useCallback(
     () => setErrorToastActive((active) => !active),
+    []
+  );
+  const toggleDeleteSuccessToast = useCallback(
+    () => setDeleteSuccessToastActive((active) => !active),
     []
   );
 
@@ -151,10 +180,17 @@ const AutoBundlePage = () => {
   ) : null;
   const errorToast = errorToastActive ? (
     <Toast
-      content="Error while saving data"
+      content="Error while saving data, try changing fields before saving"
       onDismiss={toggleErrorToastActive}
       duration={3000}
       error
+    />
+  ) : null;
+  const deleteSuccessToast = deleteSuccessToastActive ? (
+    <Toast
+      content="Auto Bundle deleted successfully"
+      onDismiss={toggleErrorToastActive}
+      duration={3000}
     />
   ) : null;
 
@@ -187,6 +223,18 @@ const AutoBundlePage = () => {
           <Form onSubmit={handleSubmit}>
             <FormLayout>
               <LegacyCard sectioned>
+                <LegacyCard.Section>
+                  Auto Bundle status{" "}
+                  {bundleActice ? (
+                    <Badge status="success">Active</Badge>
+                  ) : (
+                    <Badge>Inactive</Badge>
+                  )}
+                  <p>
+                    The discount will be applied automatically when it meets the
+                    conditions you set.
+                  </p>
+                </LegacyCard.Section>
                 <LegacyCard.Section>
                   <OptionList
                     title="Product Tags"
@@ -256,8 +304,8 @@ const AutoBundlePage = () => {
                     label="Minimum products to buy"
                     helpText="Minimum number of products customer need to buy to get a discount"
                     type="number"
-                    autoComplete="10"
-                    min={0}
+                    autoComplete="2"
+                    min={1}
                     max={20}
                   />
                 </LegacyCard.Section>
@@ -269,8 +317,18 @@ const AutoBundlePage = () => {
                   Save
                 </Button>
                 <Button
-                  primary
+                  loading={deleting}
                   destructive
+                  disabled={!bundleActice}
+                  onClick={() => {
+                    deleteAutoBundle();
+                    redirect.dispatch(Redirect.Action.APP, "/");
+                  }}
+                >
+                  Delete
+                </Button>
+                <Button
+                  monochrome
                   onClick={() => {
                     redirect.dispatch(Redirect.Action.APP, "/");
                   }}
@@ -284,6 +342,7 @@ const AutoBundlePage = () => {
       </Layout>
       {successToast}
       {errorToast}
+      {deleteSuccessToast}
     </Page>
   );
 };
