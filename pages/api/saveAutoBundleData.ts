@@ -4,6 +4,7 @@ import { NextApiHandler } from "next";
 import prisma from "@/utils/prisma";
 import {
   discountCreate,
+  discountDelete,
   getProductsByCollection,
 } from "@/utils/shopifyQueries";
 
@@ -62,13 +63,14 @@ const handler: NextApiHandler = async (req, res) => {
     });
 
     let collections = data.collections;
-    // If user not selected any collection then loop throw all collections
+    // If user not selected any collection then loop through all collections
     if (collections.length == 0) {
       collections = data.allCollections;
     }
 
     let autoBundleProducts = [];
 
+    // Filter through products and add products that matches the users requirement
     for (let collection of collections) {
       const response: GetByCollectionProducts = await getProductsByCollection(
         client,
@@ -99,6 +101,21 @@ const handler: NextApiHandler = async (req, res) => {
       }
     }
 
+    const discountData = await prisma.bundle_discount_id.findUnique({
+      where: {
+        bundleId: "Auto Generated Bundle",
+      },
+    });
+
+    // Delete the old discount if exists
+    if (discountData !== null) {
+      let discountId = discountData.discountId;
+      let ids = [];
+      ids.push(discountId);
+      await discountDelete(client, ids);
+    }
+
+    // If autobundle products is grater than 0 then create new discount and update database
     if (autoBundleProducts.length > 0) {
       const discountId = await discountCreate(client, {
         title: "Bundle Discount",
@@ -107,8 +124,14 @@ const handler: NextApiHandler = async (req, res) => {
         minProducts: data.minProducts,
       });
 
-      await prisma.bundle_discount_id.create({
-        data: {
+      await prisma.bundle_discount_id.upsert({
+        where: {
+          bundleId: "Auto Generated Bundle",
+        },
+        update: {
+          discountId: discountId,
+        },
+        create: {
           bundleId: "Auto Generated Bundle",
           discountId: discountId,
           shop: shop,
