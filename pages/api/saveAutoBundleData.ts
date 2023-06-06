@@ -131,6 +131,7 @@ const handler: NextApiHandler = async (req, res) => {
         },
         create: {
           bundleId: "Auto Generated Bundle",
+          bundleName: "Auto Generated Bundle",
           discountId: discountId,
           shop: shop,
         },

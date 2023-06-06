@@ -11,6 +11,7 @@ import { discountCreate } from "./discountCreate";
 import { discountDelete } from "./discountDelete";
 import { discountUpdate } from "./discountUpdate";
 import { getProductsByCollection } from "./getProductsByCollection";
+import { getDiscountData } from "./getDiscountData";
 
 export {
   createBundleDefinition,
@@ -26,4 +27,5 @@ export {
   discountDelete,
   discountUpdate,
   getProductsByCollection,
+  getDiscountData,
 };

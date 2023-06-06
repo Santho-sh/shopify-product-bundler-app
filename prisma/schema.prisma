@@ -35,6 +35,7 @@ model auto_bundle_data {
 // Discount id for the bundle
 model bundle_discount_id {
   bundleId   String @id
+  bundleName String
   discountId String
   shop       String
 }

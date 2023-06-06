@@ -3,6 +3,7 @@ import { useAppBridge } from "@shopify/app-bridge-react";
 import { Redirect } from "@shopify/app-bridge/actions";
 import { Button, Layout, Page } from "@shopify/polaris";
 import ProductsTable from "@/components/ProductsTable";
+import AnalyticsTable from "@/components/AnalyticsTable";
 
 const HomePage = () => {
   const app = useAppBridge();
@@ -30,6 +31,7 @@ const HomePage = () => {
       <Layout>
         <Layout.Section>
           <ProductsTable />
+          <AnalyticsTable />
         </Layout.Section>
       </Layout>
     </Page>
