@@ -61,6 +61,11 @@
     "toasts": {
       "success": "Pakken er lagret",
       "error": "Feil ved oppretting av pakken"
+    },
+    "table": {
+      "product": "Produkt",
+      "title": "Tittel",
+      "price": "Pris"
     }
   },
   "edit_bundle": {

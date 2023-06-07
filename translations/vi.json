@@ -59,6 +59,11 @@
     "toasts": {
       "success": "Gói đã được lưu",
       "error": "Lỗi khi tạo Gói"
+    },
+    "table": {
+      "product": "Sản phẩm",
+      "title": "Tiêu đề",
+      "price": "Giá"
     }
   },
   "edit_bundle": {

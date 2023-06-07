@@ -61,6 +61,11 @@
     "toasts": {
       "success": "Pakke gemt",
       "error": "Fejl ved oprettelse af pakke"
+    },
+    "table": {
+      "product": "Produkt",
+      "title": "Titel",
+      "price": "Pris"
     }
   },
   "edit_bundle": {

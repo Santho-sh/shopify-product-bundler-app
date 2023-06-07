@@ -61,6 +61,11 @@
     "toasts": {
       "success": "Balíček uložen",
       "error": "Chyba při vytváření balíčku"
+    },
+    "table": {
+      "product": "Produkt",
+      "title": "Název",
+      "price": "Cena"
     }
   },
   "edit_bundle": {

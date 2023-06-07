@@ -61,6 +61,11 @@
     "toasts": {
       "success": "Paketti tallennettu",
       "error": "Virhe paketin luonnissa"
+    },
+    "table": {
+      "product": "Tuote",
+      "title": "Otsikko",
+      "price": "Hinta"
     }
   },
   "edit_bundle": {

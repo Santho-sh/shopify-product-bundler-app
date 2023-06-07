@@ -59,6 +59,11 @@
     "toasts": {
       "success": "Paket Kaydedildi",
       "error": "Paket oluşturulurken hata oluştu"
+    },
+    "table": {
+      "product": "Ürün",
+      "title": "Başlık",
+      "price": "Fiyat"
     }
   },
   "edit_bundle": {

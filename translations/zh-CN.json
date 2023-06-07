@@ -59,6 +59,11 @@
     "toasts": {
       "success": "捆绑已保存",
       "error": "创建捆绑时出错"
+    },
+    "table": {
+      "product": "产品",
+      "title": "标题",
+      "price": "价格"
     }
   },
   "edit_bundle": {

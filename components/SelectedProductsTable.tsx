@@ -4,6 +4,8 @@ import {
 } from "@shopify/app-bridge/actions/ResourcePicker";
 import { IndexTable, LegacyCard, Text } from "@shopify/polaris";
 import React, { ReactElement } from "react";
+import { useI18n } from "@shopify/react-i18n";
+import en from "../translations/en.json";
 
 type Props = {
   products: Product[];
@@ -11,6 +13,15 @@ type Props = {
 
 function SelectedProductsTable({ products }: Props): ReactElement {
   let productsArray: Partial<ProductVariant>[] = [];
+  const [i18n] = useI18n({
+    id: "index",
+    fallback: en,
+    translations(locale) {
+      if (locale === "en") {
+        return en;
+      }
+    },
+  });
 
   products.forEach(({ variants }) => {
     productsArray.push(...variants);
@@ -35,9 +46,9 @@ function SelectedProductsTable({ products }: Props): ReactElement {
       <IndexTable
         itemCount={productsArray.length}
         headings={[
-          { title: "Product" },
-          { title: "Title" },
-          { title: "Price" },
+          { title: `${i18n.translate("create_bundle.table.product")}` },
+          { title: `${i18n.translate("create_bundle.table.title")}` },
+          { title: `${i18n.translate("create_bundle.table.price")}` },
         ]}
         selectable={false}
       >

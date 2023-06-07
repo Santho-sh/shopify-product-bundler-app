@@ -61,6 +61,11 @@
     "toasts": {
       "success": "Bundel opgeslagen",
       "error": "Fout bij het aanmaken van de bundel"
+    },
+    "table": {
+      "product": "Product",
+      "title": "Titel",
+      "price": "Prijs"
     }
   },
   "edit_bundle": {

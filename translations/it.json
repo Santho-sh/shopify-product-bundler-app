@@ -61,6 +61,11 @@
     "toasts": {
       "success": "Bundle Salvato",
       "error": "Errore durante la creazione del bundle"
+    },
+    "table": {
+      "product": "Prodotto",
+      "title": "Titolo",
+      "price": "Prezzo"
     }
   },
   "edit_bundle": {

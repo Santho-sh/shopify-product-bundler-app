@@ -61,6 +61,11 @@
     "toasts": {
       "success": "バンドルが保存されました",
       "error": "バンドルの作成中にエラーが発生しました"
+    },
+    "table": {
+      "product": "商品",
+      "title": "タイトル",
+      "price": "価格"
     }
   },
   "edit_bundle": {

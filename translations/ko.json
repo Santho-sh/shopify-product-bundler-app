@@ -61,6 +61,11 @@
     "toasts": {
       "success": "번들이 저장되었습니다",
       "error": "번들 생성 중 오류가 발생했습니다"
+    },
+    "table": {
+      "product": "제품",
+      "title": "제목",
+      "price": "가격"
     }
   },
   "edit_bundle": {

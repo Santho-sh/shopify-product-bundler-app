@@ -61,6 +61,11 @@
     "toasts": {
       "success": "Paketet sparades",
       "error": "Fel vid skapande av paket"
+    },
+    "table": {
+      "product": "Produkt",
+      "title": "Titel",
+      "price": "Pris"
     }
   },
   "edit_bundle": {

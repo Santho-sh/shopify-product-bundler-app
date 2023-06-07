@@ -61,6 +61,11 @@
     "toasts": {
       "success": "Pakiet zapisany",
       "error": "Błąd podczas tworzenia pakietu"
+    },
+    "table": {
+      "product": "Produkt",
+      "title": "Tytuł",
+      "price": "Cena"
     }
   },
   "edit_bundle": {

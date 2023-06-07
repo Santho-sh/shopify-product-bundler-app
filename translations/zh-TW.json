@@ -61,6 +61,11 @@
     "toasts": {
       "success": "捆貨已儲存",
       "error": "建立捆貨時發生錯誤"
+    },
+    "table": {
+      "product": "产品",
+      "title": "标题",
+      "price": "价格"
     }
   },
   "edit_bundle": {
