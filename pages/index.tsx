@@ -1,24 +1,15 @@
 import isShopAvailable from "@/utils/middleware/isShopAvailable";
-import { useAppBridge } from "@shopify/app-bridge-react";
+import { useAppBridge, useLocale } from "@shopify/app-bridge-react";
 import { Redirect } from "@shopify/app-bridge/actions";
 import { Button, Layout, Page } from "@shopify/polaris";
 import ProductsTable from "@/components/ProductsTable";
 import AnalyticsTable from "@/components/AnalyticsTable";
 import { useI18n } from "@shopify/react-i18n";
-import en from "../translations/en.json";
 
 const HomePage = () => {
   const app = useAppBridge();
   const redirect = Redirect.create(app);
-  const [i18n] = useI18n({
-    id: "index",
-    fallback: en,
-    translations(locale) {
-      if (locale === "en") {
-        return en;
-      }
-    },
-  });
+  const [i18n] = useI18n();
 
   return (
     <Page

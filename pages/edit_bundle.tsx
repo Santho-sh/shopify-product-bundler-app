@@ -19,7 +19,6 @@ import { useRouter } from "next/router";
 import { NextPage } from "next";
 import { EditedBundleData } from "@/utils/shopifyQueries/editBundle";
 import { useI18n } from "@shopify/react-i18n";
-import en from "../translations/en.json";
 
 export type Fieldvalues = {
   bundle_name?: string;
@@ -61,21 +60,14 @@ const CreateBundlePage: NextPage = () => {
   const redirect = Redirect.create(app);
   const fetch = useFetch();
 
-  const [i18n] = useI18n({
-    id: "index",
-    fallback: en,
-    translations(locale) {
-      if (locale === "en") {
-        return en;
-      }
-    },
-  });
+  const [i18n] = useI18n();
 
   const [bundleName, setBundleName] = useState("");
   const [bundleTitle, setBundleTitle] = useState("");
   const [description, setDescription] = useState("");
   const [discount, setDiscount] = useState("10");
   const [products, setProducts] = useState<ProductData[]>([]);
+  const [rows, setRows] = useState<string[][]>([]);
   const [loading, setLoading] = useState(false);
   const [gettingBundle, setGettingBundle] = useState(false);
 
@@ -100,20 +92,29 @@ const CreateBundlePage: NextPage = () => {
       setDiscount(values.discount);
       let productsData: ProductData[] = [];
       // Getting products data
-      await JSON.parse(values.products).map(async (productId: string) => {
+      const products = JSON.parse(values.products);
+
+      for (let productId of products) {
         let data: GetProductData = await fetch("/api/getProduct", {
           method: "POST",
           body: JSON.stringify({
             id: productId,
           }),
         }).then(async (res) => JSON.parse(await res.json()));
+
         productsData.push({
           id: data.id,
           name: data.title,
           price: data.priceRangeV2.maxVariantPrice.amount,
         });
-      });
+      }
+
       setProducts(productsData);
+      setRows(
+        productsData.map((product) => {
+          return [product.name, product.price];
+        })
+      );
       setGettingBundle(false);
     } catch (e) {
       redirect.dispatch(Redirect.Action.APP, "/");
@@ -146,10 +147,6 @@ const CreateBundlePage: NextPage = () => {
     }
     setLoading(false);
   }
-
-  const rows = products.map((product) => {
-    return [product.name, product.price];
-  });
 
   // success/error toast messages
   const [successToastActive, setSuccessToastActive] = useState(false);

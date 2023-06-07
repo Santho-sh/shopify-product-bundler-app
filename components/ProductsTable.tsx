@@ -12,7 +12,6 @@ import { GetBundlesData } from "@/utils/shopifyQueries/getBundles";
 import { Redirect } from "@shopify/app-bridge/actions";
 import { useAppBridge } from "@shopify/app-bridge-react";
 import { useI18n } from "@shopify/react-i18n";
-import en from "../translations/en.json";
 
 export type Fieldvalues = {
   bundle_name?: string;
@@ -29,15 +28,7 @@ export default function ProductsTable() {
   const app = useAppBridge();
   const redirect = Redirect.create(app);
 
-  const [i18n] = useI18n({
-    id: "index",
-    fallback: en,
-    translations(locale) {
-      if (locale === "en") {
-        return en;
-      }
-    },
-  });
+  const [i18n] = useI18n();
 
   const [bundles, setBundles] = useState([]);
   const [hasPreviousPage, setHasPreviousPage] = useState(false);

@@ -18,7 +18,6 @@ import { useCallback, useEffect, useState } from "react";
 import React from "react";
 import useFetch from "@/components/hooks/useFetch";
 import { useI18n } from "@shopify/react-i18n";
-import en from "../translations/en.json";
 
 export type getCollectionsData = {
   node: {
@@ -44,15 +43,7 @@ const AutoBundlePage = () => {
   const redirect = Redirect.create(app);
   const fetch = useFetch();
 
-  const [i18n] = useI18n({
-    id: "index",
-    fallback: en,
-    translations(locale) {
-      if (locale === "en") {
-        return en;
-      }
-    },
-  });
+  const [i18n] = useI18n();
 
   true;
   // Already an auto bundle is active or not

@@ -20,22 +20,13 @@ import React from "react";
 import useFetch from "@/components/hooks/useFetch";
 import { BundleData } from "@/utils/shopifyQueries/createBundle";
 import { useI18n } from "@shopify/react-i18n";
-import en from "../translations/en.json";
 
 const CreateBundlePage = () => {
   const app = useAppBridge();
   const redirect = Redirect.create(app);
   const fetch = useFetch();
 
-  const [i18n] = useI18n({
-    id: "index",
-    fallback: en,
-    translations(locale) {
-      if (locale === "en") {
-        return en;
-      }
-    },
-  });
+  const [i18n] = useI18n();
 
   const [bundleName, setBundleName] = useState(
     `${i18n.translate("create_bundle.default_values.bundle_name")}`

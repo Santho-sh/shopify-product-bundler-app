@@ -2,19 +2,10 @@ import { useState, useEffect } from "react";
 import useFetch from "./hooks/useFetch";
 import { DataTable, LegacyCard, Spinner } from "@shopify/polaris";
 import { useI18n } from "@shopify/react-i18n";
-import en from "../translations/en.json";
 
 export default function AnalyticsTable() {
   const fetch = useFetch();
-  const [i18n] = useI18n({
-    id: "index",
-    fallback: en,
-    translations(locale) {
-      if (locale === "en") {
-        return en;
-      }
-    },
-  });
+  const [i18n] = useI18n();
 
   const [gettingData, setGettingData] = useState(false);
   const [totalSales, setTotalSales] = useState(0);
