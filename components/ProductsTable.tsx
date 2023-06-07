@@ -28,6 +28,7 @@ export default function ProductsTable() {
   const fetch = useFetch();
   const app = useAppBridge();
   const redirect = Redirect.create(app);
+
   const [i18n] = useI18n({
     id: "index",
     fallback: en,
@@ -46,14 +47,7 @@ export default function ProductsTable() {
   const [deleting, setDeleting] = useState(false);
   const [gettingBundles, setgettingBundles] = useState(false);
 
-  function arrayToObject(fields) {
-    let values: Fieldvalues = {};
-    for (let field of fields) {
-      values[field.key] = field.value;
-    }
-    return values;
-  }
-
+  // Delete bundles
   async function deleteBundle() {
     setDeleting(true);
     await fetch("/api/deleteBundles", {
@@ -73,6 +67,15 @@ export default function ProductsTable() {
     setDeleting(false);
   }
 
+  function arrayToObject(fields) {
+    let values: Fieldvalues = {};
+    for (let field of fields) {
+      values[field.key] = field.value;
+    }
+    return values;
+  }
+
+  // get all bundles data
   async function getBunldes(after: boolean, cursor: string = null) {
     setgettingBundles(true);
     let data: GetBundlesData = await fetch("/api/getBundles", {
@@ -103,18 +106,20 @@ export default function ProductsTable() {
     setgettingBundles(false);
   }
 
+  // initially get all bundles
   useEffect(() => {
     getBunldes(true);
   }, []);
 
   const resourceName = {
-    singular: "bundle",
-    plural: "bundles",
+    singular: `${i18n.translate("index.title")}`,
+    plural: `${i18n.translate("index.title")}`,
   };
 
   const { selectedResources, allResourcesSelected, handleSelectionChange } =
     useIndexResourceState(bundles);
 
+  // table data
   const rowMarkup = bundles.map(
     ({ id, handle, name, title, created, discount }, index) => (
       <IndexTable.Row
@@ -134,6 +139,7 @@ export default function ProductsTable() {
               navigator.clipboard.writeText(handle);
             }}
             plain
+            dataPrimaryLink
           >
             {i18n.translate("index.bundles_table.copy")}
           </Button>
@@ -150,7 +156,6 @@ export default function ProductsTable() {
               );
             }}
             plain
-            destructive
           >
             {i18n.translate("index.bundles_table.view_edit")}
           </Button>
