@@ -6,7 +6,7 @@
   <div class="bundle">
     <p class="bundle-title">{{ bundle.bundle_title }}</p>
     <p class="bundle-description">{{ bundle.description }}</p>
-    <p class="discounted-price">{{ bundle.discount }}% Discount</p>
+    <p class="discounted-price">{{ bundle.discount }}% {{ 'discount' | t }}</p>
 
     <div class="products">
       {% for product in bundle.products.value %}
@@ -38,7 +38,8 @@
     <div class="add-to-cart-button">
       <p class="discounted-price">
         <span class="original-price">{{ price | money }}</span>
-        {{ price | minus: discountedPrice | money }} Only
+        {{ price | minus: discountedPrice | money }}
+        {{ 'only' | t }}
       </p>
       <form action="/cart/add" method="post">
         {% for product in bundle.products.value %}
@@ -48,7 +49,7 @@
             value="{{ product.variants.first.id }}"
           >
         {% endfor %}
-        <button type="submit">Buy Now</button>
+        <button type="submit">{{ 'action' | t }}</button>
       </form>
     </div>
   </div>
@@ -64,8 +65,8 @@
     {
       "type": "text",
       "id": "shortcode",
-      "label": "Shortcode",
-      "info": "You can get the shortcode in Product Bundles app."
+      "label": "t:label",
+      "info": "t:info"
     }
   ]
 }
