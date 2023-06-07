@@ -1,9 +1,20 @@
 import { useState, useEffect } from "react";
 import useFetch from "./hooks/useFetch";
 import { DataTable, LegacyCard } from "@shopify/polaris";
+import { useI18n } from "@shopify/react-i18n";
+import en from "../translations/en.json";
 
 export default function AnalyticsTable() {
   const fetch = useFetch();
+  const [i18n] = useI18n({
+    id: "index",
+    fallback: en,
+    translations(locale) {
+      if (locale === "en") {
+        return en;
+      }
+    },
+  });
 
   const [gettingData, setGettingData] = useState(false);
   const [totalSales, setTotalSales] = useState(0);
@@ -38,13 +49,21 @@ export default function AnalyticsTable() {
 
   return (
     <>
-      <LegacyCard title="Total Bundle Sales" sectioned>
+      <LegacyCard
+        title={i18n.translate("index.analytics.total_sales")}
+        sectioned
+      >
         <h1>{totalSales}</h1>
       </LegacyCard>
       <LegacyCard>
         <DataTable
-          columnContentTypes={["text", "text", "numeric"]}
-          headings={["Bundle", "Created", "Summary", "Sales"]}
+          columnContentTypes={["text", "text", "text", "numeric"]}
+          headings={[
+            `${i18n.translate("index.analytics.table.name")}`,
+            `${i18n.translate("index.analytics.table.created")}`,
+            `${i18n.translate("index.analytics.table.summary")}`,
+            `${i18n.translate("index.analytics.table.sales")}`,
+          ]}
           rows={rows}
         />
       </LegacyCard>

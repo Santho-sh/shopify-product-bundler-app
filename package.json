@@ -40,6 +40,7 @@
     "@shopify/app-bridge-react": "^3.7.7",
     "@shopify/polaris": "^10.49.1",
     "@shopify/react-form": "^2.5.5",
+    "@shopify/react-i18n": "^7.8.0",
     "@shopify/shopify-api": "^7.2.0",
     "cryptr": "^6.2.0",
     "graphql": "^16.6.0",

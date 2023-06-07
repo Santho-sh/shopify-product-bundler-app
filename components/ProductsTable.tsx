@@ -11,6 +11,8 @@ import useFetch from "./hooks/useFetch";
 import { GetBundlesData } from "@/utils/shopifyQueries/getBundles";
 import { Redirect } from "@shopify/app-bridge/actions";
 import { useAppBridge } from "@shopify/app-bridge-react";
+import { useI18n } from "@shopify/react-i18n";
+import en from "../translations/en.json";
 
 export type Fieldvalues = {
   bundle_name?: string;
@@ -26,6 +28,15 @@ export default function ProductsTable() {
   const fetch = useFetch();
   const app = useAppBridge();
   const redirect = Redirect.create(app);
+  const [i18n] = useI18n({
+    id: "index",
+    fallback: en,
+    translations(locale) {
+      if (locale === "en") {
+        return en;
+      }
+    },
+  });
 
   const [bundles, setBundles] = useState([]);
   const [hasPreviousPage, setHasPreviousPage] = useState(false);
@@ -124,7 +135,7 @@ export default function ProductsTable() {
             }}
             plain
           >
-            Copy
+            {i18n.translate("index.bundles_table.copy")}
           </Button>
         </IndexTable.Cell>
         <IndexTable.Cell>{discount}</IndexTable.Cell>
@@ -141,7 +152,7 @@ export default function ProductsTable() {
             plain
             destructive
           >
-            View/Edit
+            {i18n.translate("index.bundles_table.view_edit")}
           </Button>
         </IndexTable.Cell>
       </IndexTable.Row>
@@ -160,12 +171,12 @@ export default function ProductsTable() {
           onSelectionChange={handleSelectionChange}
           loading={gettingBundles}
           headings={[
-            { title: "Bundle Name" },
-            { title: "Shortcode" },
-            { title: "Discount" },
-            { title: "Created" },
-            { title: "Title" },
-            { title: "Action" },
+            { title: `${i18n.translate("index.bundles_table.name")}` },
+            { title: `${i18n.translate("index.bundles_table.shortcode")}` },
+            { title: `${i18n.translate("index.bundles_table.discount")}` },
+            { title: `${i18n.translate("index.bundles_table.created")}` },
+            { title: `${i18n.translate("index.bundles_table.title")}` },
+            { title: `${i18n.translate("index.bundles_table.action")}` },
           ]}
           lastColumnSticky
         >
@@ -185,7 +196,7 @@ export default function ProductsTable() {
         />
         {selectedResources.length > 0 ? (
           <Button onClick={() => deleteBundle()} destructive loading={deleting}>
-            Delete
+            {i18n.translate("buttons.delete")}
           </Button>
         ) : null}
       </div>

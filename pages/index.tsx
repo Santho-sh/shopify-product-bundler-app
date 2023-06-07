@@ -4,25 +4,36 @@ import { Redirect } from "@shopify/app-bridge/actions";
 import { Button, Layout, Page } from "@shopify/polaris";
 import ProductsTable from "@/components/ProductsTable";
 import AnalyticsTable from "@/components/AnalyticsTable";
+import { useI18n } from "@shopify/react-i18n";
+import en from "../translations/en.json";
 
 const HomePage = () => {
   const app = useAppBridge();
   const redirect = Redirect.create(app);
+  const [i18n] = useI18n({
+    id: "index",
+    fallback: en,
+    translations(locale) {
+      if (locale === "en") {
+        return en;
+      }
+    },
+  });
 
   return (
     <Page
-      title="Bundles"
+      title={i18n.translate("index.title")}
       secondaryActions={
         <Button
           onClick={() => {
             redirect.dispatch(Redirect.Action.APP, "/auto_bundle");
           }}
         >
-          Auto Bundle Generation
+          {i18n.translate("buttons.auto_bundle")}
         </Button>
       }
       primaryAction={{
-        content: "Create Bundle",
+        content: `${i18n.translate("buttons.create_bundle")}`,
         onAction: () => {
           redirect.dispatch(Redirect.Action.APP, "/create_bundle");
         },

@@ -18,6 +18,8 @@ import useFetch from "@/components/hooks/useFetch";
 import { useRouter } from "next/router";
 import { NextPage } from "next";
 import { EditedBundleData } from "@/utils/shopifyQueries/editBundle";
+import { useI18n } from "@shopify/react-i18n";
+import en from "../translations/en.json";
 
 export type Fieldvalues = {
   bundle_name?: string;
@@ -59,11 +61,19 @@ const CreateBundlePage: NextPage = () => {
   const redirect = Redirect.create(app);
   const fetch = useFetch();
 
-  const [bundleName, setBundleName] = useState("Bundle discount");
-  const [bundleTitle, setBundleTitle] = useState("Get a discount!");
-  const [description, setDescription] = useState(
-    "Buy these products together and get a discount!"
-  );
+  const [i18n] = useI18n({
+    id: "index",
+    fallback: en,
+    translations(locale) {
+      if (locale === "en") {
+        return en;
+      }
+    },
+  });
+
+  const [bundleName, setBundleName] = useState("");
+  const [bundleTitle, setBundleTitle] = useState("");
+  const [description, setDescription] = useState("");
   const [discount, setDiscount] = useState("10");
   const [products, setProducts] = useState<ProductData[]>([]);
   const [loading, setLoading] = useState(false);
@@ -156,14 +166,14 @@ const CreateBundlePage: NextPage = () => {
 
   const successToast = successToastActive ? (
     <Toast
-      content="Bundle Saved"
+      content={i18n.translate("create_bundle.toasts.success")}
       onDismiss={toggleSuccessToastActive}
       duration={3000}
     />
   ) : null;
   const errorToast = errorToastActive ? (
     <Toast
-      content="Error while saving bundle"
+      content={i18n.translate("create_bundle.toasts.error")}
       onDismiss={toggleErrorToastActive}
       duration={3000}
       error
@@ -199,14 +209,14 @@ const CreateBundlePage: NextPage = () => {
           justifyContent: "center",
         }}
       >
-        <Spinner accessibilityLabel="Spinner example" size="large" />
+        <Spinner accessibilityLabel="Spinner" size="large" />
       </div>
     );
   }
 
   return (
     <Page
-      title={"Edit Bundle"}
+      title={i18n.translate("edit_bundle.title")}
       backAction={{
         onAction: () => redirect.dispatch(Redirect.Action.APP, "/"),
       }}
@@ -220,8 +230,10 @@ const CreateBundlePage: NextPage = () => {
                   <TextField
                     value={bundleName}
                     onChange={handleBundleNameChange}
-                    label="Bundle Name"
-                    helpText="Bundle name will be visible on invoices."
+                    label={i18n.translate("create_bundle.bundle_name.label")}
+                    helpText={i18n.translate(
+                      "create_bundle.bundle_name.help_text"
+                    )}
                     type="text"
                     autoComplete=""
                   />
@@ -231,8 +243,10 @@ const CreateBundlePage: NextPage = () => {
                   <TextField
                     value={bundleTitle}
                     onChange={handleTitleChange}
-                    label="Title"
-                    helpText="Title will be displayed on product pages."
+                    label={i18n.translate("create_bundle.bundle_title.label")}
+                    helpText={i18n.translate(
+                      "create_bundle.bundle_title.help_text"
+                    )}
                     type="text"
                     autoComplete=""
                   />
@@ -242,8 +256,10 @@ const CreateBundlePage: NextPage = () => {
                   <TextField
                     value={description}
                     onChange={handleDescriptionChange}
-                    label="Description"
-                    helpText="Description will be displayed on product pages under bundle title."
+                    label={i18n.translate("create_bundle.description.label")}
+                    helpText={i18n.translate(
+                      "create_bundle.description.help_text"
+                    )}
                     type="text"
                     autoComplete=""
                   />
@@ -252,8 +268,10 @@ const CreateBundlePage: NextPage = () => {
                   <TextField
                     value={discount}
                     onChange={handleDiscountChange}
-                    label="Percentage discount"
-                    helpText="Set the percentage discount which will be applied to each product in the bundle. You can set it to 0% if you want to create a bundle without a discount."
+                    label={i18n.translate("create_bundle.discount.label")}
+                    helpText={i18n.translate(
+                      "create_bundle.discount.help_text"
+                    )}
                     type="number"
                     suffix="%"
                     autoComplete="10"
@@ -262,11 +280,17 @@ const CreateBundlePage: NextPage = () => {
                   />
                 </LegacyCard.Section>
               </LegacyCard>
-              <LegacyCard title="Products in bundle" sectioned>
+              <LegacyCard
+                title={i18n.translate("edit_bundle.products_table.title")}
+                sectioned
+              >
                 <DataTable
                   showTotalsInFooter
                   columnContentTypes={["text", "text"]}
-                  headings={["Product", "Price"]}
+                  headings={[
+                    `${i18n.translate("edit_bundle.products_table.product")}`,
+                    `${i18n.translate("edit_bundle.products_table.price")}`,
+                  ]}
                   rows={rows}
                 />
               </LegacyCard>
@@ -274,7 +298,7 @@ const CreateBundlePage: NextPage = () => {
                 style={{ display: "flex", gap: "1rem", paddingBottom: "1rem" }}
               >
                 <Button primary submit loading={loading}>
-                  Save bundle
+                  {i18n.translate("buttons.save_bundle")}
                 </Button>
                 <Button
                   primary
@@ -283,7 +307,7 @@ const CreateBundlePage: NextPage = () => {
                     redirect.dispatch(Redirect.Action.APP, "/");
                   }}
                 >
-                  Cancel
+                  {i18n.translate("buttons.cancel")}
                 </Button>
               </div>
             </FormLayout>

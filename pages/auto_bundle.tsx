@@ -17,6 +17,8 @@ import {
 import { useCallback, useEffect, useState } from "react";
 import React from "react";
 import useFetch from "@/components/hooks/useFetch";
+import { useI18n } from "@shopify/react-i18n";
+import en from "../translations/en.json";
 
 export type getCollectionsData = {
   node: {
@@ -41,6 +43,16 @@ const AutoBundlePage = () => {
   const app = useAppBridge();
   const redirect = Redirect.create(app);
   const fetch = useFetch();
+
+  const [i18n] = useI18n({
+    id: "index",
+    fallback: en,
+    translations(locale) {
+      if (locale === "en") {
+        return en;
+      }
+    },
+  });
 
   true;
   // Already an auto bundle is active or not
@@ -173,14 +185,14 @@ const AutoBundlePage = () => {
 
   const successToast = successToastActive ? (
     <Toast
-      content="Bundle Data Saved"
+      content={i18n.translate("auto_bundle.toasts.success")}
       onDismiss={toggleSuccessToastActive}
       duration={3000}
     />
   ) : null;
   const errorToast = errorToastActive ? (
     <Toast
-      content="Error while saving data, try changing fields before saving"
+      content={i18n.translate("auto_bundle.toasts.error")}
       onDismiss={toggleErrorToastActive}
       duration={3000}
       error
@@ -188,7 +200,7 @@ const AutoBundlePage = () => {
   ) : null;
   const deleteSuccessToast = deleteSuccessToastActive ? (
     <Toast
-      content="Auto Bundle deleted successfully"
+      content={i18n.translate("auto_bundle.toasts.delete")}
       onDismiss={toggleErrorToastActive}
       duration={3000}
     />
@@ -213,7 +225,7 @@ const AutoBundlePage = () => {
 
   return (
     <Page
-      title="Automatic Bundle Generation"
+      title={i18n.translate("auto_bundle.title")}
       backAction={{
         onAction: () => redirect.dispatch(Redirect.Action.APP, "/"),
       }}
@@ -224,20 +236,21 @@ const AutoBundlePage = () => {
             <FormLayout>
               <LegacyCard sectioned>
                 <LegacyCard.Section>
-                  Auto Bundle status{" "}
+                  {i18n.translate("auto_bundle.status.title")}{" "}
                   {bundleActice ? (
-                    <Badge status="success">Active</Badge>
+                    <Badge status="success">
+                      {i18n.translate("auto_bundle.status.active")}
+                    </Badge>
                   ) : (
-                    <Badge>Inactive</Badge>
+                    <Badge>
+                      {i18n.translate("auto_bundle.status.inactive")}
+                    </Badge>
                   )}
-                  <p>
-                    The discount will be applied automatically when it meets the
-                    conditions you set.
-                  </p>
+                  <p>{i18n.translate("auto_bundle.description")}</p>
                 </LegacyCard.Section>
                 <LegacyCard.Section>
                   <OptionList
-                    title="Product Tags"
+                    title={i18n.translate("auto_bundle.tags")}
                     onChange={(value) => setSelectedTags(value)}
                     options={tagsOptions}
                     allowMultiple
@@ -247,7 +260,7 @@ const AutoBundlePage = () => {
 
                 <LegacyCard.Section>
                   <OptionList
-                    title="Collections"
+                    title={i18n.translate("auto_bundle.collections")}
                     onChange={(value) => setSelectedCollections(value)}
                     options={collectionsOptions}
                     allowMultiple
@@ -261,8 +274,10 @@ const AutoBundlePage = () => {
                     onChange={(value) => {
                       setMinPrice(value);
                     }}
-                    label="Minimum price"
-                    helpText="Minimun price of product to include in the bundle"
+                    label={i18n.translate("auto_bundle.minimum_price.label")}
+                    helpText={i18n.translate(
+                      "auto_bundle.minimum_price.help_text"
+                    )}
                     type="number"
                     autoComplete=""
                     min={0}
@@ -274,8 +289,10 @@ const AutoBundlePage = () => {
                     onChange={(value) => {
                       setMaxPrice(value);
                     }}
-                    label="Maximum Price"
-                    helpText="Maximum price of product to include in the bundle"
+                    label={i18n.translate("auto_bundle.maximum_price.label")}
+                    helpText={i18n.translate(
+                      "auto_bundle.maximum_price.help_text"
+                    )}
                     type="number"
                     autoComplete=""
                     min={0}
@@ -287,8 +304,10 @@ const AutoBundlePage = () => {
                     onChange={(value) => {
                       setDiscount(value);
                     }}
-                    label="Percentage discount"
-                    helpText="Set the percentage discount which will be applied to each product in the bundle. You can set it to 0% if you want to create a bundle without a discount."
+                    label={i18n.translate("create_bundle.discount.label")}
+                    helpText={i18n.translate(
+                      "create_bundle.discount.help_text"
+                    )}
                     type="number"
                     autoComplete="10"
                     min={0}
@@ -301,8 +320,10 @@ const AutoBundlePage = () => {
                     onChange={(value) => {
                       setMinProducts(value);
                     }}
-                    label="Minimum products to buy"
-                    helpText="Minimum number of products customer need to buy to get a discount"
+                    label={i18n.translate("auto_bundle.minimum_products.label")}
+                    helpText={i18n.translate(
+                      "auto_bundle.minimum_products.help_text"
+                    )}
                     type="number"
                     autoComplete="2"
                     min={1}
@@ -314,7 +335,7 @@ const AutoBundlePage = () => {
                 style={{ display: "flex", gap: "1rem", paddingBottom: "1rem" }}
               >
                 <Button primary submit loading={saving}>
-                  Save
+                  {i18n.translate("buttons.save")}
                 </Button>
                 <Button
                   loading={deleting}
@@ -325,7 +346,7 @@ const AutoBundlePage = () => {
                     redirect.dispatch(Redirect.Action.APP, "/");
                   }}
                 >
-                  Delete
+                  {i18n.translate("buttons.delete")}
                 </Button>
                 <Button
                   monochrome
@@ -333,7 +354,7 @@ const AutoBundlePage = () => {
                     redirect.dispatch(Redirect.Action.APP, "/");
                   }}
                 >
-                  Cancel
+                  {i18n.translate("buttons.cancel")}
                 </Button>
               </div>
             </FormLayout>

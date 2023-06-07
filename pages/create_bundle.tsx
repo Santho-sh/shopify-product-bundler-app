@@ -19,16 +19,32 @@ import { useCallback, useState } from "react";
 import React from "react";
 import useFetch from "@/components/hooks/useFetch";
 import { BundleData } from "@/utils/shopifyQueries/createBundle";
+import { useI18n } from "@shopify/react-i18n";
+import en from "../translations/en.json";
 
 const CreateBundlePage = () => {
   const app = useAppBridge();
   const redirect = Redirect.create(app);
   const fetch = useFetch();
 
-  const [bundleName, setBundleName] = useState("Bundle discount");
-  const [bundleTitle, setBundleTitle] = useState("Get a discount!");
+  const [i18n] = useI18n({
+    id: "index",
+    fallback: en,
+    translations(locale) {
+      if (locale === "en") {
+        return en;
+      }
+    },
+  });
+
+  const [bundleName, setBundleName] = useState(
+    `${i18n.translate("create_bundle.default_values.bundle_name")}`
+  );
+  const [bundleTitle, setBundleTitle] = useState(
+    `${i18n.translate("create_bundle.default_values.bundle_title")}`
+  );
   const [description, setDescription] = useState(
-    "Buy these products together and get a discount!"
+    `${i18n.translate("create_bundle.default_values.description")}`
   );
   const [discount, setDiscount] = useState("10");
   const [selectedProducts, setSelectedProducts] = useState<Product[]>([]);
@@ -53,9 +69,15 @@ const CreateBundlePage = () => {
       body: JSON.stringify(data),
     });
     if (response.status == 200) {
-      setBundleName("Bundle discount");
-      setBundleTitle("Get a discount!");
-      setDescription("Buy these products together and get a discount!");
+      setBundleName(
+        `${i18n.translate("create_bundle.default_values.bundle_name")}`
+      );
+      setBundleTitle(
+        `${i18n.translate("create_bundle.default_values.bundle_title")}`
+      );
+      setDescription(
+        `${i18n.translate("create_bundle.default_values.description")}`
+      );
       setDiscount("10");
       toggleSuccessToastActive();
     } else {
@@ -79,14 +101,14 @@ const CreateBundlePage = () => {
 
   const successToast = successToastActive ? (
     <Toast
-      content="Bundle Saved"
+      content={i18n.translate("create_bundle.toasts.success")}
       onDismiss={toggleSuccessToastActive}
       duration={3000}
     />
   ) : null;
   const errorToast = errorToastActive ? (
     <Toast
-      content="Error while creating bundle"
+      content={i18n.translate("create_bundle.toasts.error")}
       onDismiss={toggleErrorToastActive}
       duration={3000}
       error
@@ -111,8 +133,10 @@ const CreateBundlePage = () => {
                     onChange={(value) => {
                       setBundleName(value);
                     }}
-                    label="Bundle Name"
-                    helpText="Bundle name will be visible on invoices."
+                    label={i18n.translate("create_bundle.bundle_name.label")}
+                    helpText={i18n.translate(
+                      "create_bundle.bundle_name.help_text"
+                    )}
                     type="text"
                     autoComplete=""
                   />
@@ -124,8 +148,10 @@ const CreateBundlePage = () => {
                     onChange={(value) => {
                       setBundleTitle(value);
                     }}
-                    label="Title"
-                    helpText="Title will be displayed on product pages."
+                    label={i18n.translate("create_bundle.bundle_title.label")}
+                    helpText={i18n.translate(
+                      "create_bundle.bundle_title.help_text"
+                    )}
                     type="text"
                     autoComplete=""
                   />
@@ -137,8 +163,10 @@ const CreateBundlePage = () => {
                     onChange={(value) => {
                       setDescription(value);
                     }}
-                    label="Description"
-                    helpText="Description will be displayed on product pages under bundle title."
+                    label={i18n.translate("create_bundle.description.label")}
+                    helpText={i18n.translate(
+                      "create_bundle.description.help_text"
+                    )}
                     type="text"
                     autoComplete=""
                   />
@@ -149,8 +177,10 @@ const CreateBundlePage = () => {
                     onChange={(value) => {
                       setDiscount(value);
                     }}
-                    label="Percentage discount"
-                    helpText="Set the percentage discount which will be applied to each product in the bundle. You can set it to 0% if you want to create a bundle without a discount."
+                    label={i18n.translate("create_bundle.discount.label")}
+                    helpText={i18n.translate(
+                      "create_bundle.discount.help_text"
+                    )}
                     type="number"
                     suffix="%"
                     autoComplete="10"
@@ -160,19 +190,18 @@ const CreateBundlePage = () => {
                 </LegacyCard.Section>
               </LegacyCard>
 
-              <LegacyCard title="Discounted products in bundle" sectioned>
+              <LegacyCard
+                title={i18n.translate("create_bundle.products.title")}
+                sectioned
+              >
                 <Text as="p" color="subdued">
-                  Select the products you want to offer in the bundle. It is
-                  recommended to select only a handful of product (e.g. 2 - 4
-                  products), as smaller bundles will be rendered faster and
-                  won't overwhelm your customers.
+                  {i18n.translate("create_bundle.products.help_text")}
                 </Text>
                 <LegacyCard.Section>
                   {selectedProducts.length == 0 ? (
                     <Banner status="warning">
                       <Text as="p" color="warning">
-                        You have to select at least one product if you want to
-                        save the bundle.
+                        {i18n.translate("create_bundle.products.warning")}
                       </Text>
                     </Banner>
                   ) : (
@@ -180,7 +209,7 @@ const CreateBundlePage = () => {
                   )}
                 </LegacyCard.Section>
                 <Button primary onClick={() => setResoursePicker(true)}>
-                  Select Products
+                  {i18n.translate("create_bundle.products.select")}
                 </Button>
               </LegacyCard>
               <ResourcePicker
@@ -210,7 +239,7 @@ const CreateBundlePage = () => {
                   disabled={selectedProducts.length == 0 ? true : false}
                   loading={loading}
                 >
-                  Save bundle
+                  {i18n.translate("buttons.save_bundle")}
                 </Button>
               </div>
             </FormLayout>
