@@ -1,0 +1,102 @@
+{
+  "buttons": {
+    "create_bundle": "번들 생성",
+    "auto_bundle": "자동 번들 생성",
+    "delete": "삭제",
+    "save_bundle": "번들 저장",
+    "save": "저장",
+    "cancel": "취소"
+  },
+  "index": {
+    "title": "번들",
+    "bundles_table": {
+      "name": "번들 이름",
+      "shortcode": "단축 코드",
+      "discount": "할인",
+      "created": "생성일",
+      "title": "제목",
+      "action": "동작",
+      "view_edit": "보기/편집",
+      "copy": "복사"
+    },
+    "analytics": {
+      "total_sales": "총 번들 판매",
+      "table": {
+        "name": "번들",
+        "created": "생성일",
+        "summary": "요약",
+        "sales": "판매"
+      }
+    }
+  },
+  "create_bundle": {
+    "title": "번들 생성",
+    "default_values": {
+      "bundle_name": "번들 할인",
+      "bundle_title": "할인 받기!",
+      "description": "이 제품들을 함께 구매하고 할인 혜택을 받으세요!"
+    },
+    "bundle_name": {
+      "label": "번들 이름",
+      "help_text": "번들 이름은 송장에 표시됩니다."
+    },
+    "bundle_title": {
+      "label": "제목",
+      "help_text": "제목은 제품 페이지에 표시됩니다."
+    },
+    "description": {
+      "label": "설명",
+      "help_text": "설명은 번들 제목 아래 제품 페이지에 표시됩니다."
+    },
+    "discount": {
+      "label": "할인률",
+      "help_text": "번들 내 각 제품에 적용될 할인률을 설정하세요. 할인 없는 번들을 만들고 싶다면 0%로 설정할 수 있습니다."
+    },
+    "products": {
+      "title": "번들 내 할인 제품",
+      "help_text": "번들에 제공할 제품을 선택하세요. 작은 번들은 빠르게 표시되며 고객에게 부담을 주지 않도록 몇 가지 제품(예: 2~4개)만 선택하는 것이 좋습니다.",
+      "warning": "번들을 저장하려면 최소한 하나의 제품을 선택해야 합니다.",
+      "select": "제품 선택"
+    },
+    "toasts": {
+      "success": "번들이 저장되었습니다",
+      "error": "번들 생성 중 오류가 발생했습니다"
+    }
+  },
+  "edit_bundle": {
+    "title": "번들 편집",
+    "products_table": {
+      "title": "번들 내 제품",
+      "product": "제품",
+      "price": "가격"
+    }
+  },
+  "auto_bundle": {
+    "title": "자동 번들 생성",
+    "description": "조건이 충족되면 할인이 자동으로 적용됩니다.",
+    "status": {
+      "title": "자동 번들 상태",
+      "active": "활성화됨",
+      "inactive": "비활성화됨"
+    },
+    "tags": "제품 태그",
+    "collections": "컬렉션",
+    "toasts": {
+      "success": "번들 데이터가 저장되었습니다",
+      "error": "데이터 저장 중 오류가 발생했습니다. 저장하기 전에 필드를 변경해 보세요.",
+      "delete": "자동 번들이 성공적으로 삭제되었습니다"
+    },
+    "minimum_price": {
+      "label": "최소 가격",
+      "help_text": "번들에 포함될 제품의 최소 가격을 설정하세요"
+    },
+    "maximum_price": {
+      "label": "최대 가격",
+      "help_text": "번들에 포함될 제품의 최대 가격을 설정하세요"
+    },
+    "minimum_products": {
+      "label": "최소 구매 제품 수",
+      "help_text": "할인을 받기 위해 고객이 구매해야 하는 최소 제품 수를 설정하세요"
+    }
+  }
+}

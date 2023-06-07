@@ -1,0 +1,102 @@
+{
+  "buttons": {
+    "create_bundle": "Bundel aanmaken",
+    "auto_bundle": "Automatische bundelgeneratie",
+    "delete": "Verwijderen",
+    "save_bundle": "Bundel opslaan",
+    "save": "Opslaan",
+    "cancel": "Annuleren"
+  },
+  "index": {
+    "title": "Bundels",
+    "bundles_table": {
+      "name": "Bundelnaam",
+      "shortcode": "Shortcode",
+      "discount": "Korting",
+      "created": "Aangemaakt",
+      "title": "Titel",
+      "action": "Actie",
+      "view_edit": "Bekijken/Bewerken",
+      "copy": "Kopiëren"
+    },
+    "analytics": {
+      "total_sales": "Totale bundelverkoop",
+      "table": {
+        "name": "Bundel",
+        "created": "Aangemaakt",
+        "summary": "Samenvatting",
+        "sales": "Verkoop"
+      }
+    }
+  },
+  "create_bundle": {
+    "title": "Bundel aanmaken",
+    "default_values": {
+      "bundle_name": "Bundelkorting",
+      "bundle_title": "Krijg korting!",
+      "description": "Koop deze producten samen en krijg korting!"
+    },
+    "bundle_name": {
+      "label": "Bundelnaam",
+      "help_text": "De bundelnaam is zichtbaar op facturen."
+    },
+    "bundle_title": {
+      "label": "Titel",
+      "help_text": "De titel wordt weergegeven op productpagina's."
+    },
+    "description": {
+      "label": "Beschrijving",
+      "help_text": "De beschrijving wordt weergegeven op productpagina's onder de bundeltitel."
+    },
+    "discount": {
+      "label": "Percentage korting",
+      "help_text": "Stel het percentage korting in dat wordt toegepast op elk product in de bundel. Je kunt het instellen op 0% als je een bundel zonder korting wilt maken."
+    },
+    "products": {
+      "title": "Producten met korting in de bundel",
+      "help_text": "Selecteer de producten die je wilt aanbieden in de bundel. Het is aan te raden om slechts een paar producten te selecteren (bijvoorbeeld 2-4 producten), omdat kleinere bundels sneller worden weergegeven en je klanten niet overweldigen.",
+      "warning": "Je moet ten minste één product selecteren om de bundel op te slaan.",
+      "select": "Selecteer producten"
+    },
+    "toasts": {
+      "success": "Bundel opgeslagen",
+      "error": "Fout bij het aanmaken van de bundel"
+    }
+  },
+  "edit_bundle": {
+    "title": "Bundel bewerken",
+    "products_table": {
+      "title": "Producten in de bundel",
+      "product": "Product",
+      "price": "Prijs"
+    }
+  },
+  "auto_bundle": {
+    "title": "Automatische bundelgeneratie",
+    "description": "De korting wordt automatisch toegepast wanneer aan de door jou ingestelde voorwaarden wordt voldaan.",
+    "status": {
+      "title": "Status automatische bundel",
+      "active": "Actief",
+      "inactive": "Inactief"
+    },
+    "tags": "Producttags",
+    "collections": "Collecties",
+    "toasts": {
+      "success": "Bundelgegevens opgeslagen",
+      "error": "Fout bij het opslaan van gegevens, probeer velden te wijzigen voordat je opslaat",
+      "delete": "Automatische bundel succesvol verwijderd"
+    },
+    "minimum_price": {
+      "label": "Minimale prijs",
+      "help_text": "Minimale prijs van het product om op te nemen in de bundel"
+    },
+    "maximum_price": {
+      "label": "Maximale prijs",
+      "help_text": "Maximale prijs van het product om op te nemen in de bundel"
+    },
+    "minimum_products": {
+      "label": "Minimale aantal producten om te kopen",
+      "help_text": "Minimaal aantal producten dat de klant moet kopen om korting te krijgen"
+    }
+  }
+}

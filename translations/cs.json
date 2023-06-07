@@ -1,0 +1,102 @@
+{
+  "buttons": {
+    "create_bundle": "Vytvořit balíček",
+    "auto_bundle": "Automatické vytváření balíčků",
+    "delete": "Smazat",
+    "save_bundle": "Uložit balíček",
+    "save": "Uložit",
+    "cancel": "Zrušit"
+  },
+  "index": {
+    "title": "Balíčky",
+    "bundles_table": {
+      "name": "Název balíčku",
+      "shortcode": "Zkratka",
+      "discount": "Sleva",
+      "created": "Vytvořeno",
+      "title": "Titulek",
+      "action": "Akce",
+      "view_edit": "Zobrazit/Upravit",
+      "copy": "Kopírovat"
+    },
+    "analytics": {
+      "total_sales": "Celkový počet prodejů balíčku",
+      "table": {
+        "name": "Balíček",
+        "created": "Vytvořeno",
+        "summary": "Shrnutí",
+        "sales": "Prodeje"
+      }
+    }
+  },
+  "create_bundle": {
+    "title": "Vytvořit balíček",
+    "default_values": {
+      "bundle_name": "Sleva na balíček",
+      "bundle_title": "Získejte slevu!",
+      "description": "Kupte tyto produkty společně a získáte slevu!"
+    },
+    "bundle_name": {
+      "label": "Název balíčku",
+      "help_text": "Název balíčku bude viditelný na fakturách."
+    },
+    "bundle_title": {
+      "label": "Titulek",
+      "help_text": "Titulek se zobrazí na stránkách produktů."
+    },
+    "description": {
+      "label": "Popis",
+      "help_text": "Popis se zobrazí na stránkách produktů pod titulkem balíčku."
+    },
+    "discount": {
+      "label": "Procentuální sleva",
+      "help_text": "Nastavte procentuální slevu, která se aplikuje na každý produkt v balíčku. Můžete ji nastavit na 0 %, pokud chcete vytvořit balíček bez slevy."
+    },
+    "products": {
+      "title": "Produkty se slevou v balíčku",
+      "help_text": "Vyberte produkty, které chcete nabízet v balíčku. Doporučuje se vybrat pouze malý počet produktů (např. 2-4 produkty), protože menší balíčky se rychleji vykreslují a nezahlcují vaše zákazníky.",
+      "warning": "Pokud chcete balíček uložit, musíte vybrat alespoň jeden produkt.",
+      "select": "Vybrat produkty"
+    },
+    "toasts": {
+      "success": "Balíček uložen",
+      "error": "Chyba při vytváření balíčku"
+    }
+  },
+  "edit_bundle": {
+    "title": "Upravit balíček",
+    "products_table": {
+      "title": "Produkty v balíčku",
+      "product": "Produkt",
+      "price": "Cena"
+    }
+  },
+  "auto_bundle": {
+    "title": "Automatické vytváření balíčků",
+    "description": "Sleva bude automaticky aplikována, pokud budou splněny nastavené podmínky.",
+    "status": {
+      "title": "Stav automatického balíčku",
+      "active": "Aktivní",
+      "inactive": "Neaktivní"
+    },
+    "tags": "Štítky produktů",
+    "collections": "Kolekce",
+    "toasts": {
+      "success": "Data balíčku uložena",
+      "error": "Chyba při ukládání dat, zkuste před uložením změnit pole",
+      "delete": "Automatický balíček byl úspěšně smazán"
+    },
+    "minimum_price": {
+      "label": "Minimální cena",
+      "help_text": "Minimální cena produktu, který má být zahrnut v balíčku"
+    },
+    "maximum_price": {
+      "label": "Maximální cena",
+      "help_text": "Maximální cena produktu, který má být zahrnut v balíčku"
+    },
+    "minimum_products": {
+      "label": "Minimální počet produktů ke koupi",
+      "help_text": "Minimální počet produktů, které musí zákazník koupit, aby obdržel slevu"
+    }
+  }
+}

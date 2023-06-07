@@ -1,0 +1,102 @@
+{
+  "buttons": {
+    "create_bundle": "Luo paketti",
+    "auto_bundle": "Automaattinen paketin luonti",
+    "delete": "Poista",
+    "save_bundle": "Tallenna paketti",
+    "save": "Tallenna",
+    "cancel": "Peruuta"
+  },
+  "index": {
+    "title": "Paketit",
+    "bundles_table": {
+      "name": "Paketin nimi",
+      "shortcode": "Lyhyt koodi",
+      "discount": "Alennus",
+      "created": "Luotu",
+      "title": "Otsikko",
+      "action": "Toiminta",
+      "view_edit": "Näytä/muokkaa",
+      "copy": "Kopioi"
+    },
+    "analytics": {
+      "total_sales": "Kokonaismyynti paketeille",
+      "table": {
+        "name": "Paketti",
+        "created": "Luotu",
+        "summary": "Yhteenveto",
+        "sales": "Myynti"
+      }
+    }
+  },
+  "create_bundle": {
+    "title": "Luo paketti",
+    "default_values": {
+      "bundle_name": "Paketin alennus",
+      "bundle_title": "Saat alennusta!",
+      "description": "Osta nämä tuotteet yhdessä ja saat alennusta!!"
+    },
+    "bundle_name": {
+      "label": "Paketin nimi",
+      "help_text": "Paketin nimi näkyy laskuissa."
+    },
+    "bundle_title": {
+      "label": "Otsikko",
+      "help_text": "Otsikko näkyy tuotesivuilla."
+    },
+    "description": {
+      "label": "Kuvaus",
+      "help_text": "Kuvaus näkyy tuotesivuilla paketin otsikon alapuolella."
+    },
+    "discount": {
+      "label": "Prosenttialennus",
+      "help_text": "Aseta prosenttialennus, joka koskee jokaista paketin tuotetta. Voit asettaa sen 0 %:iin, jos haluat luoda alennuksettomia paketteja."
+    },
+    "products": {
+      "title": "Alennetut tuotteet paketissa",
+      "help_text": "Valitse tuotteet, jotka haluat tarjota paketissa. On suositeltavaa valita vain muutama tuote (esim. 2-4 tuotetta), sillä pienemmät paketit latautuvat nopeammin eivätkä kuormita asiakkaitasi liikaa.",
+      "warning": "Sinun on valittava vähintään yksi tuote, jotta voit tallentaa paketin.",
+      "select": "Valitse tuotteet"
+    },
+    "toasts": {
+      "success": "Paketti tallennettu",
+      "error": "Virhe paketin luonnissa"
+    }
+  },
+  "edit_bundle": {
+    "title": "Muokkaa pakettia",
+    "products_table": {
+      "title": "Tuotteet paketissa",
+      "product": "Tuote",
+      "price": "Hinta"
+    }
+  },
+  "auto_bundle": {
+    "title": "Automaattinen paketin luonti",
+    "description": "Alennus lisätään automaattisesti, kun täyttyvät asettamasi ehdot.",
+    "status": {
+      "title": "Automaattisen paketin tila",
+      "active": "Aktiivinen",
+      "inactive": "Ei aktiivinen"
+    },
+    "tags": "Tuotetunnisteet",
+    "collections": "Kokoelmat",
+    "toasts": {
+      "success": "Pakettidatan tallennus onnistui",
+      "error": "Virhe tallennettaessa tietoja, yritä muuttaa kenttiä ennen tallentamista",
+      "delete": "Automaattinen paketti poistettu onnistuneesti"
+    },
+    "minimum_price": {
+      "label": "Vähimmäishinta",
+      "help_text": "Tuotteen vähimmäishinta, joka sisällytetään pakettiin"
+    },
+    "maximum_price": {
+      "label": "Enimmäishinta",
+      "help_text": "Tuotteen enimmäishinta, joka sisällytetään pakettiin"
+    },
+    "minimum_products": {
+      "label": "Vähimmäismäärä ostettavia tuotteita",
+      "help_text": "Vähimmäismäärä tuotteita, jonka asiakkaan on ostettava saadakseen alennuksen"
+    }
+  }
+}

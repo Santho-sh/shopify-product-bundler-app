@@ -1,0 +1,102 @@
+{
+  "buttons": {
+    "create_bundle": "バンドルを作成する",
+    "auto_bundle": "自動バンドル生成",
+    "delete": "削除",
+    "save_bundle": "バンドルを保存する",
+    "save": "保存",
+    "cancel": "キャンセル"
+  },
+  "index": {
+    "title": "バンドル",
+    "bundles_table": {
+      "name": "バンドル名",
+      "shortcode": "ショートコード",
+      "discount": "割引",
+      "created": "作成日",
+      "title": "タイトル",
+      "action": "操作",
+      "view_edit": "表示/編集",
+      "copy": "コピー"
+    },
+    "analytics": {
+      "total_sales": "バンドルの総売上",
+      "table": {
+        "name": "バンドル",
+        "created": "作成日",
+        "summary": "概要",
+        "sales": "売上"
+      }
+    }
+  },
+  "create_bundle": {
+    "title": "バンドルを作成する",
+    "default_values": {
+      "bundle_name": "バンドル割引",
+      "bundle_title": "割引を受けよう！",
+      "description": "これらの製品を一緒に購入し、割引を受けましょう！"
+    },
+    "bundle_name": {
+      "label": "バンドル名",
+      "help_text": "バンドル名は請求書に表示されます。"
+    },
+    "bundle_title": {
+      "label": "タイトル",
+      "help_text": "タイトルは製品ページに表示されます。"
+    },
+    "description": {
+      "label": "説明",
+      "help_text": "説明はバンドルタイトルの下に製品ページに表示されます。"
+    },
+    "discount": {
+      "label": "割引率",
+      "help_text": "バンドル内の各製品に適用される割引率を設定します。割引のないバンドルを作成する場合は0%に設定できます。"
+    },
+    "products": {
+      "title": "バンドル内の割引製品",
+      "help_text": "バンドルで提供する製品を選択してください。小さなバンドルは表示が速くなり、顧客に圧迫感を与えないため、数個の製品（例：2〜4個）を選択することをお勧めします。",
+      "warning": "バンドルを保存するには、少なくとも1つの製品を選択する必要があります。",
+      "select": "製品を選択する"
+    },
+    "toasts": {
+      "success": "バンドルが保存されました",
+      "error": "バンドルの作成中にエラーが発生しました"
+    }
+  },
+  "edit_bundle": {
+    "title": "バンドルを編集する",
+    "products_table": {
+      "title": "バンドル内の製品",
+      "product": "製品",
+      "price": "価格"
+    }
+  },
+  "auto_bundle": {
+    "title": "自動バンドル生成",
+    "description": "設定した条件に合致すると、割引が自動的に適用されます。",
+    "status": {
+      "title": "自動バンドルのステータス",
+      "active": "アクティブ",
+      "inactive": "非アクティブ"
+    },
+    "tags": "製品タグ",
+    "collections": "コレクション",
+    "toasts": {
+      "success": "バンドルデータが保存されました",
+      "error": "データの保存中にエラーが発生しました。保存する前にフィールドを変更してみてください。",
+      "delete": "自動バンドルが正常に削除されました"
+    },
+    "minimum_price": {
+      "label": "最低価格",
+      "help_text": "バンドルに含める製品の最低価格を設定します"
+    },
+    "maximum_price": {
+      "label": "最大価格",
+      "help_text": "バンドルに含める製品の最大価格を設定します"
+    },
+    "minimum_products": {
+      "label": "最小購入数",
+      "help_text": "割引を受けるために顧客が購入する必要のある最小製品数を設定します"
+    }
+  }
+}

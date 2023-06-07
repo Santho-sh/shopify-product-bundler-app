@@ -1,0 +1,100 @@
+{
+  "buttons": {
+    "create_bundle": "Paket Oluştur",
+    "auto_bundle": "Otomatik Paket Oluşturma",
+    "delete": "Sil",
+    "save_bundle": "Paketi Kaydet",
+    "save": "Kaydet",
+    "cancel": "İptal"
+  },
+  "index": {
+    "title": "Paketler",
+    "bundles_table": {
+      "name": "Paket Adı",
+      "shortcode": "Kısa Kod",
+      "discount": "İndirim",
+      "created": "Oluşturulma Tarihi",
+      "title": "Başlık",
+      "action": "Eylem",
+      "view_edit": "Görüntüle/Düzenle",
+      "copy": "Kopyala"
+    },
+    "analytics": {
+      "total_sales": "Toplam Paket Satışları",
+      "table": {
+        "name": "Paket",
+        "created": "Oluşturulma Tarihi",
+        "summary": "Özet",
+        "sales": "Satışlar"
+      }
+    }
+  },
+  "create_bundle": {
+    "title": "Paket Oluştur",
+    "default_values": {
+      "bundle_name": "Paket indirimi",
+      "bundle_title": "İndirim Al!",
+      "description": "Bu ürünleri bir arada alın ve indirim kazanın!!"
+    },
+    "bundle_name": {
+      "label": "Paket Adı",
+      "help_text": "Paket adı faturalarda görünecektir."
+    },
+    "bundle_title": {
+      "label": "Başlık",
+      "help_text": "Başlık ürün sayfalarında görüntülenecektir."
+    },
+    "description": {
+      "label": "Açıklama",
+      "help_text": "Açıklama başlık altında ürün sayfalarında görüntülenecektir."
+    },
+    "discount": {
+      "label": "Yüzde indirim",
+      "help_text": "Paket içindeki her ürüne uygulanacak yüzde indirimi belirleyin. İndirimsiz bir paket oluşturmak isterseniz yüzde 0 olarak ayarlayabilirsiniz."
+    },
+    "products": {
+      "title": "Paket içinde indirimli ürünler",
+      "help_text": "Paket içinde sunmak istediğiniz ürünleri seçin. Müşterilerinizi sıkıntıya sokmamak ve hızlı yükleme sağlamak için sadece birkaç ürün seçmeniz önerilir (örneğin 2 - 4 ürün)."
+    },
+    "toasts": {
+      "success": "Paket Kaydedildi",
+      "error": "Paket oluşturulurken hata oluştu"
+    }
+  },
+  "edit_bundle": {
+    "title": "Paketi Düzenle",
+    "products_table": {
+      "title": "Paket İçindeki Ürünler",
+      "product": "Ürün",
+      "price": "Fiyat"
+    }
+  },
+  "auto_bundle": {
+    "title": "Otomatik Paket Oluşturma",
+    "description": "İndirim, belirlediğiniz koşulları karşıladığında otomatik olarak uygulanır.",
+    "status": {
+      "title": "Otomatik Paket Durumu",
+      "active": "Aktif",
+      "inactive": "Pasif"
+    },
+    "tags": "Ürün Etiketleri",
+    "collections": "Koleksiyonlar",
+    "toasts": {
+      "success": "Paket Verileri Kaydedildi",
+      "error": "Verileri kaydederken hata oluştu, kaydetmeden önce alanları değiştirmeyi deneyin",
+      "delete": "Otomatik Paket başarıyla silindi"
+    },
+    "minimum_price": {
+      "label": "Minimum fiyat",
+      "help_text": "Pakete dahil edilecek ürünlerin minimum fiyatı"
+    },
+    "maximum_price": {
+      "label": "Maksimum fiyat",
+      "help_text": "Pakete dahil edilecek ürünlerin maksimum fiyatı"
+    },
+    "minimum_products": {
+      "label": "Alınacak minimum ürün sayısı",
+      "help_text": "İndirim almak için müşterilerin alması gereken minimum ürün sayısı"
+    }
+  }
+}

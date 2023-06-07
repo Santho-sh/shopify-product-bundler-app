@@ -1,0 +1,102 @@
+{
+  "buttons": {
+    "create_bundle": "Opprett pakke",
+    "auto_bundle": "Automatisk pakkesamling",
+    "delete": "Slett",
+    "save_bundle": "Lagre pakke",
+    "save": "Lagre",
+    "cancel": "Avbryt"
+  },
+  "index": {
+    "title": "Pakker",
+    "bundles_table": {
+      "name": "Pakkenavn",
+      "shortcode": "Kortkode",
+      "discount": "Rabatt",
+      "created": "Opprettet",
+      "title": "Tittel",
+      "action": "Handling",
+      "view_edit": "Vis/Rediger",
+      "copy": "Kopier"
+    },
+    "analytics": {
+      "total_sales": "Totalt antall salg av pakker",
+      "table": {
+        "name": "Pakke",
+        "created": "Opprettet",
+        "summary": "Oppsummering",
+        "sales": "Salg"
+      }
+    }
+  },
+  "create_bundle": {
+    "title": "Opprett pakke",
+    "default_values": {
+      "bundle_name": "Pakkerabatt",
+      "bundle_title": "Få rabatt!",
+      "description": "Kjøp disse produktene sammen og få rabatt!"
+    },
+    "bundle_name": {
+      "label": "Pakkenavn",
+      "help_text": "Pakkenavnet vil vises på fakturaer."
+    },
+    "bundle_title": {
+      "label": "Tittel",
+      "help_text": "Tittelen vil vises på produktsider."
+    },
+    "description": {
+      "label": "Beskrivelse",
+      "help_text": "Beskrivelsen vil vises på produktsider under pakketittelen."
+    },
+    "discount": {
+      "label": "Prosentvis rabatt",
+      "help_text": "Angi prosentvis rabatt som skal brukes på hvert produkt i pakken. Du kan sette den til 0 % hvis du ønsker å opprette en pakke uten rabatt."
+    },
+    "products": {
+      "title": "Rabatterte produkter i pakken",
+      "help_text": "Velg produktene du ønsker å tilby i pakken. Det anbefales å velge bare noen få produkter (f.eks. 2-4 produkter), da mindre pakker blir raskere generert og ikke overvelder kundene dine.",
+      "warning": "Du må velge minst ett produkt hvis du vil lagre pakken.",
+      "select": "Velg produkter"
+    },
+    "toasts": {
+      "success": "Pakken er lagret",
+      "error": "Feil ved oppretting av pakken"
+    }
+  },
+  "edit_bundle": {
+    "title": "Rediger pakke",
+    "products_table": {
+      "title": "Produkter i pakken",
+      "product": "Produkt",
+      "price": "Pris"
+    }
+  },
+  "auto_bundle": {
+    "title": "Automatisk pakkesamling",
+    "description": "Rabatten vil bli brukt automatisk når den oppfyller de angitte betingelsene.",
+    "status": {
+      "title": "Status for automatisk pakke",
+      "active": "Aktiv",
+      "inactive": "Inaktiv"
+    },
+    "tags": "Produktmerker",
+    "collections": "Samlinger",
+    "toasts": {
+      "success": "Pakkeinformasjon er lagret",
+      "error": "Feil ved lagring av data, prøv å endre feltene før du lagrer",
+      "delete": "Automatisk pakke er slettet"
+    },
+    "minimum_price": {
+      "label": "Minimumspris",
+      "help_text": "Minimumsprisen for produktet som skal inkluderes i pakken"
+    },
+    "maximum_price": {
+      "label": "Maksimumspris",
+      "help_text": "Maksimumsprisen for produktet som skal inkluderes i pakken"
+    },
+    "minimum_products": {
+      "label": "Minimum antall produkter som må kjøpes",
+      "help_text": "Minimum antall produkter kunden må kjøpe for å få rabatt"
+    }
+  }
+}

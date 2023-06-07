@@ -1,0 +1,102 @@
+{
+  "buttons": {
+    "create_bundle": "Crea Bundle",
+    "auto_bundle": "Generazione Automatica Bundle",
+    "delete": "Elimina",
+    "save_bundle": "Salva Bundle",
+    "save": "Salva",
+    "cancel": "Annulla"
+  },
+  "index": {
+    "title": "Bundle",
+    "bundles_table": {
+      "name": "Nome Bundle",
+      "shortcode": "Codice breve",
+      "discount": "Sconto",
+      "created": "Creato",
+      "title": "Titolo",
+      "action": "Azione",
+      "view_edit": "Visualizza/Modifica",
+      "copy": "Copia"
+    },
+    "analytics": {
+      "total_sales": "Totale Vendite Bundle",
+      "table": {
+        "name": "Bundle",
+        "created": "Creato",
+        "summary": "Sommario",
+        "sales": "Vendite"
+      }
+    }
+  },
+  "create_bundle": {
+    "title": "Crea Bundle",
+    "default_values": {
+      "bundle_name": "Sconto Bundle",
+      "bundle_title": "Ottieni uno sconto!",
+      "description": "Acquista questi prodotti insieme e ottieni uno sconto!"
+    },
+    "bundle_name": {
+      "label": "Nome Bundle",
+      "help_text": "Il nome del bundle sarà visibile nelle fatture."
+    },
+    "bundle_title": {
+      "label": "Titolo",
+      "help_text": "Il titolo sarà visualizzato nelle pagine dei prodotti."
+    },
+    "description": {
+      "label": "Descrizione",
+      "help_text": "La descrizione sarà visualizzata nelle pagine dei prodotti sotto il titolo del bundle."
+    },
+    "discount": {
+      "label": "Percentuale di sconto",
+      "help_text": "Imposta la percentuale di sconto da applicare a ciascun prodotto nel bundle. Puoi impostarlo al 0% se desideri creare un bundle senza sconto."
+    },
+    "products": {
+      "title": "Prodotti scontati nel bundle",
+      "help_text": "Seleziona i prodotti che desideri offrire nel bundle. È consigliabile selezionare solo alcuni prodotti (ad esempio, da 2 a 4 prodotti), in quanto i bundle più piccoli si renderanno più velocemente e non sovraccaricheranno i tuoi clienti.",
+      "warning": "Devi selezionare almeno un prodotto se desideri salvare il bundle.",
+      "select": "Seleziona Prodotti"
+    },
+    "toasts": {
+      "success": "Bundle Salvato",
+      "error": "Errore durante la creazione del bundle"
+    }
+  },
+  "edit_bundle": {
+    "title": "Modifica Bundle",
+    "products_table": {
+      "title": "Prodotti nel bundle",
+      "product": "Prodotto",
+      "price": "Prezzo"
+    }
+  },
+  "auto_bundle": {
+    "title": "Generazione Automatica Bundle",
+    "description": "Lo sconto verrà applicato automaticamente quando si soddisfano le condizioni impostate.",
+    "status": {
+      "title": "Stato del Bundle Automatico",
+      "active": "Attivo",
+      "inactive": "Inattivo"
+    },
+    "tags": "Tag di prodotto",
+    "collections": "Collezioni",
+    "toasts": {
+      "success": "Dati Bundle Salvati",
+      "error": "Errore durante il salvataggio dei dati, prova a modificare i campi prima di salvare",
+      "delete": "Bundle Automatico eliminato con successo"
+    },
+    "minimum_price": {
+      "label": "Prezzo minimo",
+      "help_text": "Prezzo minimo del prodotto da includere nel bundle"
+    },
+    "maximum_price": {
+      "label": "Prezzo massimo",
+      "help_text": "Prezzo massimo del prodotto da includere nel bundle"
+    },
+    "minimum_products": {
+      "label": "Numero minimo di prodotti da acquistare",
+      "help_text": "Numero minimo di prodotti che il cliente deve acquistare per ottenere uno sconto"
+    }
+  }
+}

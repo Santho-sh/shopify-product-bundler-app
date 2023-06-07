@@ -1,0 +1,102 @@
+{
+  "buttons": {
+    "create_bundle": "Opret pakke",
+    "auto_bundle": "Automatisk pakkegenerering",
+    "delete": "Slet",
+    "save_bundle": "Gem pakke",
+    "save": "Gem",
+    "cancel": "Annuller"
+  },
+  "index": {
+    "title": "Pakker",
+    "bundles_table": {
+      "name": "Pakkenavn",
+      "shortcode": "Kortkode",
+      "discount": "Rabat",
+      "created": "Oprettet",
+      "title": "Titel",
+      "action": "Handling",
+      "view_edit": "Vis/Rediger",
+      "copy": "Kopier"
+    },
+    "analytics": {
+      "total_sales": "Samlet salg af pakker",
+      "table": {
+        "name": "Pakke",
+        "created": "Oprettet",
+        "summary": "Opsummering",
+        "sales": "Salg"
+      }
+    }
+  },
+  "create_bundle": {
+    "title": "Opret pakke",
+    "default_values": {
+      "bundle_name": "Pakkerabat",
+      "bundle_title": "Få en rabat!",
+      "description": "Køb disse produkter sammen og få en rabat!"
+    },
+    "bundle_name": {
+      "label": "Pakkenavn",
+      "help_text": "Pakkenavnet vises på fakturaer."
+    },
+    "bundle_title": {
+      "label": "Titel",
+      "help_text": "Titlen vises på produktsiderne."
+    },
+    "description": {
+      "label": "Beskrivelse",
+      "help_text": "Beskrivelsen vises på produktsiderne under pakketitlen."
+    },
+    "discount": {
+      "label": "Procentrabat",
+      "help_text": "Indstil procentrabatten, der skal anvendes på hvert produkt i pakken. Du kan indstille den til 0 %, hvis du ønsker at oprette en pakke uden rabat."
+    },
+    "products": {
+      "title": "Produkter med rabat i pakken",
+      "help_text": "Vælg de produkter, du vil tilbyde i pakken. Det anbefales at vælge kun et par produkter (f.eks. 2-4 produkter), da mindre pakker vil blive indlæst hurtigere og ikke overvælder dine kunder.",
+      "warning": "Du skal vælge mindst ét produkt, hvis du vil gemme pakken.",
+      "select": "Vælg produkter"
+    },
+    "toasts": {
+      "success": "Pakke gemt",
+      "error": "Fejl ved oprettelse af pakke"
+    }
+  },
+  "edit_bundle": {
+    "title": "Rediger pakke",
+    "products_table": {
+      "title": "Produkter i pakken",
+      "product": "Produkt",
+      "price": "Pris"
+    }
+  },
+  "auto_bundle": {
+    "title": "Automatisk pakkegenerering",
+    "description": "Rabatten vil blive anvendt automatisk, når de indstillede betingelser er opfyldt.",
+    "status": {
+      "title": "Status for automatisk pakke",
+      "active": "Aktiv",
+      "inactive": "Inaktiv"
+    },
+    "tags": "Produkttags",
+    "collections": "Kollektioner",
+    "toasts": {
+      "success": "Data for pakke gemt",
+      "error": "Fejl ved lagring af data, prøv at ændre felter før gemning",
+      "delete": "Automatisk pakke slettet med succes"
+    },
+    "minimum_price": {
+      "label": "Minimumspris",
+      "help_text": "Minimumsprisen for et produkt, der skal inkluderes i pakken"
+    },
+    "maximum_price": {
+      "label": "Maksimumspris",
+      "help_text": "Maksimumsprisen for et produkt, der skal inkluderes i pakken"
+    },
+    "minimum_products": {
+      "label": "Minimum antal produkter til køb",
+      "help_text": "Minimum antal produkter, som kunden skal købe for at opnå rabatten"
+    }
+  }
+}

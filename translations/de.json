@@ -1,0 +1,102 @@
+{
+  "buttons": {
+    "create_bundle": "Bundle erstellen",
+    "auto_bundle": "Automatische Bundle-Erstellung",
+    "delete": "Löschen",
+    "save_bundle": "Bundle speichern",
+    "save": "Speichern",
+    "cancel": "Abbrechen"
+  },
+  "index": {
+    "title": "Bundles",
+    "bundles_table": {
+      "name": "Bundle-Name",
+      "shortcode": "Kurzcode",
+      "discount": "Rabatt",
+      "created": "Erstellt",
+      "title": "Titel",
+      "action": "Aktion",
+      "view_edit": "Anzeigen/Bearbeiten",
+      "copy": "Kopieren"
+    },
+    "analytics": {
+      "total_sales": "Gesamtverkäufe des Bundles",
+      "table": {
+        "name": "Bundle",
+        "created": "Erstellt",
+        "summary": "Zusammenfassung",
+        "sales": "Verkäufe"
+      }
+    }
+  },
+  "create_bundle": {
+    "title": "Bundle erstellen",
+    "default_values": {
+      "bundle_name": "Bundle-Rabatt",
+      "bundle_title": "Erhalten Sie einen Rabatt!",
+      "description": "Kaufen Sie diese Produkte zusammen und erhalten Sie einen Rabatt!"
+    },
+    "bundle_name": {
+      "label": "Bundle-Name",
+      "help_text": "Der Bundle-Name wird auf Rechnungen angezeigt."
+    },
+    "bundle_title": {
+      "label": "Titel",
+      "help_text": "Der Titel wird auf den Produktseiten angezeigt."
+    },
+    "description": {
+      "label": "Beschreibung",
+      "help_text": "Die Beschreibung wird auf den Produktseiten unter dem Bundle-Titel angezeigt."
+    },
+    "discount": {
+      "label": "Prozentsatz-Rabatt",
+      "help_text": "Legen Sie den Prozentsatz-Rabatt fest, der auf jedes Produkt im Bundle angewendet wird. Sie können ihn auf 0% setzen, wenn Sie ein Bundle ohne Rabatt erstellen möchten."
+    },
+    "products": {
+      "title": "Rabattierte Produkte im Bundle",
+      "help_text": "Wählen Sie die Produkte aus, die Sie im Bundle anbieten möchten. Es wird empfohlen, nur eine kleine Anzahl von Produkten auszuwählen (z. B. 2-4 Produkte), da kleinere Bundles schneller gerendert werden und Ihre Kunden nicht überfordern.",
+      "warning": "Sie müssen mindestens ein Produkt auswählen, um das Bundle zu speichern.",
+      "select": "Produkte auswählen"
+    },
+    "toasts": {
+      "success": "Bundle gespeichert",
+      "error": "Fehler beim Erstellen des Bundles"
+    }
+  },
+  "edit_bundle": {
+    "title": "Bundle bearbeiten",
+    "products_table": {
+      "title": "Produkte im Bundle",
+      "product": "Produkt",
+      "price": "Preis"
+    }
+  },
+  "auto_bundle": {
+    "title": "Automatische Bundle-Erstellung",
+    "description": "Der Rabatt wird automatisch angewendet, wenn die von Ihnen festgelegten Bedingungen erfüllt sind.",
+    "status": {
+      "title": "Status des automatischen Bundles",
+      "active": "Aktiv",
+      "inactive": "Inaktiv"
+    },
+    "tags": "Produkt-Tags",
+    "collections": "Kollektionen",
+    "toasts": {
+      "success": "Daten des Bundles gespeichert",
+      "error": "Fehler beim Speichern der Daten, versuchen Sie, die Felder vor dem Speichern zu ändern",
+      "delete": "Automatisches Bundle erfolgreich gelöscht"
+    },
+    "minimum_price": {
+      "label": "Mindestpreis",
+      "help_text": "Mindestpreis des Produkts, das in das Bundle aufgenommen werden soll"
+    },
+    "maximum_price": {
+      "label": "Höchstpreis",
+      "help_text": "Höchstpreis des Produkts, das in das Bundle aufgenommen werden soll"
+    },
+    "minimum_products": {
+      "label": "Mindestanzahl der zu kaufenden Produkte",
+      "help_text": "Mindestanzahl der Produkte, die der Kunde kaufen muss, um einen Rabatt zu erhalten"
+    }
+  }
+}

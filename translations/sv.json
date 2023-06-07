@@ -1,0 +1,103 @@
+{
+  "buttons": {
+    "create_bundle": "Skapa paket",
+    "auto_bundle": "Automatisk paketgenerering",
+    "delete": "Ta bort",
+    "save_bundle": "Spara paket",
+    "save": "Spara",
+    "cancel": "Avbryt"
+  },
+  "index": {
+    "title": "Paket",
+    "bundles_table": {
+      "name": "Paketnamn",
+      "shortcode": "Kortkod",
+      "discount": "Rabatt",
+      "created": "Skapad",
+      "title": "Titel",
+      "action": "Åtgärd",
+      "view_edit": "Visa/Redigera",
+      "copy": "Kopiera"
+    },
+    "analytics": {
+      "total_sales": "Totalt antal sålda paket",
+      "table": {
+        "name": "Paket",
+        "created": "Skapad",
+        "summary": "Sammanfattning",
+        "sales": "Försäljning"
+      }
+    }
+  },
+  "create_bundle": {
+    "title": "Skapa paket",
+    "default_values": {
+      "bundle_name": "Rabatterat paket",
+      "bundle_title": "Få en rabatt!",
+      "description": "Köp dessa produkter tillsammans och få en rabatt!"
+    },
+    "bundle_name": {
+      "label": "Paketnamn",
+      "help_text": "Paketnamnet visas på fakturor."
+    },
+    "bundle_title": {
+      "label": "Titel",
+      "help_text": "Titeln visas på produktsidor."
+    },
+    "description": {
+      "label": "Beskrivning",
+      "help_text": "Beskrivningen visas på produktsidor under pakettiteln."
+    },
+    "discount": {
+      "label": "Procentuell rabatt",
+      "help_text": "Ange den procentuella rabatten som ska tillämpas på varje produkt i paketet. Du kan ange 0 % om du vill skapa ett paket utan rabatt."
+    },
+    "products": {
+      "title": "Rabatterade produkter i paketet",
+      "help_text": "Välj de produkter du vill erbjuda i paketet. Det rekommenderas att välja endast ett fåtal produkter (t.ex. 2-4 produkter), eftersom mindre paket renderas snabbare och inte överväldigar dina kunder.",
+      "warning": "Du måste välja minst en produkt om du vill spara paketet.",
+      "select": "Välj produkter"
+    },
+    "toasts": {
+      "success": "Paketet sparades",
+      "error": "Fel vid skapande av paket"
+    }
+  },
+  "edit_bundle": {
+    "title": "Redigera paket",
+    "products_table": {
+      "title": "Produkter i paketet",
+      "product": "Produkt",
+      "price": "Pris"
+    }
+  },
+  "auto_bundle": {
+    "title": "Automatisk paketgenerering",
+    "description": "Rabatten tillämpas automatiskt när den uppfyller de villkor du har ställt in.",
+    "status": {
+      "title": "Status för automatiskt paket",
+
+      "active": "Aktiv",
+      "inactive": "Inaktiv"
+    },
+    "tags": "Produkttaggar",
+    "collections": "Samlingar",
+    "toasts": {
+      "success": "Paketdata sparades",
+      "error": "Fel vid sparande av data, försök ändra fälten innan du sparar",
+      "delete": "Automatiskt paket borttaget"
+    },
+    "minimum_price": {
+      "label": "Minimipris",
+      "help_text": "Minimipris för produkten som ska ingå i paketet"
+    },
+    "maximum_price": {
+      "label": "Maximipris",
+      "help_text": "Maximipris för produkten som ska ingå i paketet"
+    },
+    "minimum_products": {
+      "label": "Minsta antal produkter att köpa",
+      "help_text": "Minsta antal produkter som kunden måste köpa för att få rabatt"
+    }
+  }
+}

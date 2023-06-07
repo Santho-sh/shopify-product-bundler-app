@@ -1,0 +1,100 @@
+{
+  "buttons": {
+    "create_bundle": "Tạo Gói",
+    "auto_bundle": "Tự động Tạo Gói",
+    "delete": "Xóa",
+    "save_bundle": "Lưu Gói",
+    "save": "Lưu",
+    "cancel": "Hủy"
+  },
+  "index": {
+    "title": "Gói",
+    "bundles_table": {
+      "name": "Tên Gói",
+      "shortcode": "Mã ngắn",
+      "discount": "Giảm giá",
+      "created": "Đã tạo",
+      "title": "Tiêu đề",
+      "action": "Hành động",
+      "view_edit": "Xem/Sửa",
+      "copy": "Sao chép"
+    },
+    "analytics": {
+      "total_sales": "Tổng số lượng bán Gói",
+      "table": {
+        "name": "Gói",
+        "created": "Đã tạo",
+        "summary": "Tóm tắt",
+        "sales": "Doanh số"
+      }
+    }
+  },
+  "create_bundle": {
+    "title": "Tạo Gói",
+    "default_values": {
+      "bundle_name": "Gói giảm giá",
+      "bundle_title": "Nhận giảm giá!",
+      "description": "Mua các sản phẩm này cùng nhau và nhận giảm giá!!"
+    },
+    "bundle_name": {
+      "label": "Tên Gói",
+      "help_text": "Tên Gói sẽ hiển thị trên hóa đơn."
+    },
+    "bundle_title": {
+      "label": "Tiêu đề",
+      "help_text": "Tiêu đề sẽ hiển thị trên trang sản phẩm."
+    },
+    "description": {
+      "label": "Mô tả",
+      "help_text": "Mô tả sẽ hiển thị dưới tiêu đề Gói trên trang sản phẩm."
+    },
+    "discount": {
+      "label": "Giảm giá phần trăm",
+      "help_text": "Đặt tỷ lệ giảm giá phần trăm sẽ được áp dụng cho mỗi sản phẩm trong Gói. Bạn có thể đặt giá trị này là 0% nếu muốn tạo Gói mà không có giảm giá."
+    },
+    "products": {
+      "title": "Sản phẩm giảm giá trong Gói",
+      "help_text": "Chọn các sản phẩm bạn muốn cung cấp trong Gói. Đề nghị chỉ chọn một số lượng nhỏ sản phẩm (ví dụ: 2 - 4 sản phẩm), vì Gói nhỏ sẽ được hiển thị nhanh hơn và không làm cho khách hàng bị áp đảo."
+    },
+    "toasts": {
+      "success": "Gói đã được lưu",
+      "error": "Lỗi khi tạo Gói"
+    }
+  },
+  "edit_bundle": {
+    "title": "Chỉnh sửa Gói",
+    "products_table": {
+      "title": "Sản phẩm trong Gói",
+      "product": "Sản phẩm",
+      "price": "Giá"
+    }
+  },
+  "auto_bundle": {
+    "title": "Tự động Tạo Gói",
+    "description": "Giảm giá sẽ được áp dụng tự động khi đáp ứng các điều kiện bạn đặt ra.",
+    "status": {
+      "title": "Trạng thái Tự động Gói",
+      "active": "Đang hoạt động",
+      "inactive": "Ngừng hoạt động"
+    },
+    "tags": "Thẻ Sản phẩm",
+    "collections": "Bộ sưu tập",
+    "toasts": {
+      "success": "Dữ liệu Gói đã được lưu",
+      "error": "Lỗi khi lưu dữ liệu, hãy thay đổi trường trước khi lưu",
+      "delete": "Gói Tự động đã được xóa thành công"
+    },
+    "minimum_price": {
+      "label": "Giá tối thiểu",
+      "help_text": "Giá tối thiểu của sản phẩm để bao gồm trong Gói"
+    },
+    "maximum_price": {
+      "label": "Giá tối đa",
+      "help_text": "Giá tối đa của sản phẩm để bao gồm trong Gói"
+    },
+    "minimum_products": {
+      "label": "Số lượng sản phẩm tối thiểu để mua",
+      "help_text": "Số lượng sản phẩm tối thiểu khách hàng cần mua để nhận giảm giá"
+    }
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "buttons": {
+    "create_bundle": "Crear paquete",
+    "auto_bundle": "Generación automática de paquetes",
+    "delete": "Eliminar",
+    "save_bundle": "Guardar paquete",
+    "save": "Guardar",
+    "cancel": "Cancelar"
+  },
+  "index": {
+    "title": "Paquetes",
+    "bundles_table": {
+      "name": "Nombre del paquete",
+      "shortcode": "Código abreviado",
+      "discount": "Descuento",
+      "created": "Creado",
+      "title": "Título",
+      "action": "Acción",
+      "view_edit": "Ver/Editar",
+      "copy": "Copiar"
+    },
+    "analytics": {
+      "total_sales": "Ventas totales del paquete",
+      "table": {
+        "name": "Paquete",
+        "created": "Creado",
+        "summary": "Resumen",
+        "sales": "Ventas"
+      }
+    }
+  },
+  "create_bundle": {
+    "title": "Crear paquete",
+    "default_values": {
+      "bundle_name": "Descuento del paquete",
+      "bundle_title": "¡Obtén un descuento!",
+      "description": "¡Compra estos productos juntos y obtén un descuento!"
+    },
+    "bundle_name": {
+      "label": "Nombre del paquete",
+      "help_text": "El nombre del paquete será visible en las facturas."
+    },
+    "bundle_title": {
+      "label": "Título",
+      "help_text": "El título se mostrará en las páginas de los productos."
+    },
+    "description": {
+      "label": "Descripción",
+      "help_text": "La descripción se mostrará en las páginas de los productos, debajo del título del paquete."
+    },
+    "discount": {
+      "label": "Descuento porcentual",
+      "help_text": "Establece el descuento porcentual que se aplicará a cada producto del paquete. Puedes establecerlo en 0% si quieres crear un paquete sin descuento."
+    },
+    "products": {
+      "title": "Productos con descuento en el paquete",
+      "help_text": "Selecciona los productos que deseas ofrecer en el paquete. Se recomienda seleccionar solo unos pocos productos (por ejemplo, de 2 a 4 productos), ya que los paquetes más pequeños se renderizarán más rápido y no abrumarán a tus clientes.",
+      "warning": "Debes seleccionar al menos un producto si quieres guardar el paquete.",
+      "select": "Seleccionar productos"
+    },
+    "toasts": {
+      "success": "Paquete guardado",
+      "error": "Error al crear el paquete"
+    }
+  },
+  "edit_bundle": {
+    "title": "Editar paquete",
+    "products_table": {
+      "title": "Productos en el paquete",
+      "product": "Producto",
+      "price": "Precio"
+    }
+  },
+  "auto_bundle": {
+    "title": "Generación automática de paquetes",
+    "description": "El descuento se aplicará automáticamente cuando se cumplan las condiciones que establezcas.",
+    "status": {
+      "title": "Estado del paquete automático",
+      "active": "Activo",
+      "inactive": "Inactivo"
+    },
+    "tags": "Etiquetas de productos",
+    "collections": "Colecciones",
+    "toasts": {
+      "success": "Datos del paquete guardados",
+      "error": "Error al guardar los datos, intenta cambiar los campos antes de guardar",
+      "delete": "Paquete automático eliminado correctamente"
+    },
+    "minimum_price": {
+      "label": "Precio mínimo",
+      "help_text": "Precio mínimo del producto para incluirlo en el paquete"
+    },
+    "maximum_price": {
+      "label": "Precio máximo",
+      "help_text": "Precio máximo del producto para incluirlo en el paquete"
+    },
+    "minimum_products": {
+      "label": "Mínimo de productos para comprar",
+      "help_text": "Número mínimo de productos que el cliente debe comprar para obtener un descuento"
+    }
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "buttons": {
+    "create_bundle": "Utwórz pakiet",
+    "auto_bundle": "Automatyczne generowanie pakietów",
+    "delete": "Usuń",
+    "save_bundle": "Zapisz pakiet",
+    "save": "Zapisz",
+    "cancel": "Anuluj"
+  },
+  "index": {
+    "title": "Pakiety",
+    "bundles_table": {
+      "name": "Nazwa pakietu",
+      "shortcode": "Krótki kod",
+      "discount": "Rabat",
+      "created": "Utworzony",
+      "title": "Tytuł",
+      "action": "Akcja",
+      "view_edit": "Wyświetl/Edytuj",
+      "copy": "Kopiuj"
+    },
+    "analytics": {
+      "total_sales": "Łączna liczba sprzedanych pakietów",
+      "table": {
+        "name": "Pakiet",
+        "created": "Utworzony",
+        "summary": "Podsumowanie",
+        "sales": "Sprzedaż"
+      }
+    }
+  },
+  "create_bundle": {
+    "title": "Utwórz pakiet",
+    "default_values": {
+      "bundle_name": "Pakiet ze zniżką",
+      "bundle_title": "Otrzymaj zniżkę!",
+      "description": "Kup te produkty razem i otrzymaj zniżkę!"
+    },
+    "bundle_name": {
+      "label": "Nazwa pakietu",
+      "help_text": "Nazwa pakietu będzie widoczna na fakturach."
+    },
+    "bundle_title": {
+      "label": "Tytuł",
+      "help_text": "Tytuł będzie wyświetlany na stronach produktów."
+    },
+    "description": {
+      "label": "Opis",
+      "help_text": "Opis będzie wyświetlany na stronach produktów pod tytułem pakietu."
+    },
+    "discount": {
+      "label": "Procentowy rabat",
+      "help_text": "Ustaw procentowy rabat, który zostanie zastosowany do każdego produktu w pakiecie. Możesz ustawić wartość 0%, jeśli chcesz utworzyć pakiet bez zniżki."
+    },
+    "products": {
+      "title": "Produkty objęte zniżką w pakiecie",
+      "help_text": "Wybierz produkty, które chcesz oferować w pakiecie. Zaleca się wybranie tylko kilku produktów (np. 2-4 produkty), ponieważ mniejsze pakiety będą renderowane szybciej i nie przytłoczą Twoich klientów.",
+      "warning": "Musisz wybrać co najmniej jeden produkt, jeśli chcesz zapisać pakiet.",
+      "select": "Wybierz produkty"
+    },
+    "toasts": {
+      "success": "Pakiet zapisany",
+      "error": "Błąd podczas tworzenia pakietu"
+    }
+  },
+  "edit_bundle": {
+    "title": "Edytuj pakiet",
+    "products_table": {
+      "title": "Produkty w pakiecie",
+      "product": "Produkt",
+      "price": "Cena"
+    }
+  },
+  "auto_bundle": {
+    "title": "Automatyczne generowanie pakietów",
+    "description": "Rabat zostanie automatycznie zastosowany, gdy spełnione zostaną ustawione warunki.",
+    "status": {
+      "title": "Status automatycznego pakietu",
+      "active": "Aktywny",
+      "inactive": "Nieaktywny"
+    },
+    "tags": "Tagi produktu",
+    "collections": "Kolekcje",
+    "toasts": {
+      "success": "Dane pakietu zapisane",
+      "error": "Błąd podczas zapisywania danych, spróbuj zmienić pola przed zapisem",
+      "delete": "Automatyczny pakiet usunięty pomyślnie"
+    },
+    "minimum_price": {
+      "label": "Minimalna cena",
+      "help_text": "Minimalna cena produktu, aby został uwzględniony w pakiecie"
+    },
+    "maximum_price": {
+      "label": "Maksymalna cena",
+      "help_text": "Maksymalna cena produktu, aby został uwzględniony w pakiecie"
+    },
+    "minimum_products": {
+      "label": "Minimalna liczba produktów do zakupu",
+      "help_text": "Minimalna liczba produktów, którą klient musi zakupić, aby otrzymać rabat"
+    }
+  }
+}

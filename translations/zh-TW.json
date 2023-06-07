@@ -1,0 +1,102 @@
+{
+  "buttons": {
+    "create_bundle": "建立捆貨",
+    "auto_bundle": "自動建立捆貨",
+    "delete": "刪除",
+    "save_bundle": "儲存捆貨",
+    "save": "儲存",
+    "cancel": "取消"
+  },
+  "index": {
+    "title": "捆貨",
+    "bundles_table": {
+      "name": "捆貨名稱",
+      "shortcode": "短碼",
+      "discount": "折扣",
+      "created": "建立時間",
+      "title": "標題",
+      "action": "操作",
+      "view_edit": "查看/編輯",
+      "copy": "複製"
+    },
+    "analytics": {
+      "total_sales": "捆貨總銷售量",
+      "table": {
+        "name": "捆貨",
+        "created": "建立時間",
+        "summary": "摘要",
+        "sales": "銷售量"
+      }
+    }
+  },
+  "create_bundle": {
+    "title": "建立捆貨",
+    "default_values": {
+      "bundle_name": "捆貨折扣",
+      "bundle_title": "獲得折扣！",
+      "description": "一起購買這些產品，並獲得折扣！"
+    },
+    "bundle_name": {
+      "label": "捆貨名稱",
+      "help_text": "捆貨名稱將顯示在發票上。"
+    },
+    "bundle_title": {
+      "label": "標題",
+      "help_text": "標題將顯示在產品頁面上。"
+    },
+    "description": {
+      "label": "描述",
+      "help_text": "描述將顯示在產品頁面上的捆貨標題下方。"
+    },
+    "discount": {
+      "label": "折扣百分比",
+      "help_text": "設定每個捆貨中產品應用的折扣百分比。如果您想建立一個沒有折扣的捆貨，可以將其設定為0%。"
+    },
+    "products": {
+      "title": "捆貨中的折扣產品",
+      "help_text": "選擇您想在捆貨中提供的產品。建議只選擇少量的產品（例如2-4個產品），因為較小的捆貨將較快地加載並不會使您的客戶感到困擾。",
+      "warning": "如果您想儲存捆貨，您必須選擇至少一個產品。",
+      "select": "選擇產品"
+    },
+    "toasts": {
+      "success": "捆貨已儲存",
+      "error": "建立捆貨時發生錯誤"
+    }
+  },
+  "edit_bundle": {
+    "title": "編輯捆貨",
+    "products_table": {
+      "title": "捆貨中的產品",
+      "product": "產品",
+      "price": "價格"
+    }
+  },
+  "auto_bundle": {
+    "title": "自動建立捆貨",
+    "description": "當滿足您設定的條件時，折扣將自動應用。",
+    "status": {
+      "title": "自動捆貨狀態",
+      "active": "啟用",
+      "inactive": "停用"
+    },
+    "tags": "產品標籤",
+    "collections": "產品組合",
+    "toasts": {
+      "success": "捆貨資料已儲存",
+      "error": "儲存資料時發生錯誤，請在儲存之前更改欄位",
+      "delete": "自動捆貨已成功刪除"
+    },
+    "minimum_price": {
+      "label": "最低價格",
+      "help_text": "捆貨中包含的產品的最低價格"
+    },
+    "maximum_price": {
+      "label": "最高價格",
+      "help_text": "捆貨中包含的產品的最高價格"
+    },
+    "minimum_products": {
+      "label": "最低購買數量",
+      "help_text": "客戶需要購買的最低數量以獲得折扣"
+    }
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "buttons": {
+    "create_bundle": "创建捆绑",
+    "auto_bundle": "自动创建捆绑",
+    "delete": "删除",
+    "save_bundle": "保存捆绑",
+    "save": "保存",
+    "cancel": "取消"
+  },
+  "index": {
+    "title": "捆绑",
+    "bundles_table": {
+      "name": "捆绑名称",
+      "shortcode": "短码",
+      "discount": "折扣",
+      "created": "创建时间",
+      "title": "标题",
+      "action": "操作",
+      "view_edit": "查看/编辑",
+      "copy": "复制"
+    },
+    "analytics": {
+      "total_sales": "捆绑销售总量",
+      "table": {
+        "name": "捆绑",
+        "created": "创建时间",
+        "summary": "摘要",
+        "sales": "销售量"
+      }
+    }
+  },
+  "create_bundle": {
+    "title": "创建捆绑",
+    "default_values": {
+      "bundle_name": "捆绑折扣",
+      "bundle_title": "获得折扣！",
+      "description": "一起购买这些产品，并获得折扣！"
+    },
+    "bundle_name": {
+      "label": "捆绑名称",
+      "help_text": "捆绑名称将显示在发票上。"
+    },
+    "bundle_title": {
+      "label": "标题",
+      "help_text": "标题将显示在产品页面上。"
+    },
+    "description": {
+      "label": "描述",
+      "help_text": "描述将显示在产品页面上的捆绑标题下方。"
+    },
+    "discount": {
+      "label": "百分比折扣",
+      "help_text": "设置应用于捆绑中每个产品的百分比折扣。如果您想创建没有折扣的捆绑，可以将其设置为0%。"
+    },
+    "products": {
+      "title": "捆绑中的折扣产品",
+      "help_text": "选择您想在捆绑中提供的产品。建议只选择少量产品（例如2-4个产品），因为较小的捆绑将加载速度更快，不会使您的客户感到压力。"
+    },
+    "toasts": {
+      "success": "捆绑已保存",
+      "error": "创建捆绑时出错"
+    }
+  },
+  "edit_bundle": {
+    "title": "编辑捆绑",
+    "products_table": {
+      "title": "捆绑中的产品",
+      "product": "产品",
+      "price": "价格"
+    }
+  },
+  "auto_bundle": {
+    "title": "自动创建捆绑",
+    "description": "当满足您设置的条件时，折扣将自动应用。",
+    "status": {
+      "title": "自动捆绑状态",
+      "active": "启用",
+      "inactive": "停用"
+    },
+    "tags": "产品标签",
+    "collections": "产品集合",
+    "toasts": {
+      "success": "捆绑数据已保存",
+      "error": "保存数据时出错，请在保存之前更改字段",
+      "delete": "自动捆绑已成功删除"
+    },
+    "minimum_price": {
+      "label": "最低价格",
+      "help_text": "包含在捆绑中的产品的最低价格"
+    },
+    "maximum_price": {
+      "label": "最高价格",
+      "help_text": "包含在捆绑中的产品的最高价格"
+    },
+    "minimum_products": {
+      "label": "最低购买数量",
+      "help_text": "客户需要购买的最低产品数量以获得折扣"
+    }
+  }
+}
