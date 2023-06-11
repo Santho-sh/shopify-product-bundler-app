@@ -31,6 +31,15 @@ const handler: NextApiHandler = async (req, res) => {
       // update discount percentage in Discounts
       await discountUpdate(client, discountData.discountId, data.discount);
 
+      await prisma.bundle_discount_id.update({
+        where: {
+          bundleId: data.id,
+        },
+        data: {
+          bundleName: data.bundleName,
+        },
+      });
+
       return res.status(200).send("message: Bundle saved successfully");
     }
     return res.status(400).send("message: Bad request");

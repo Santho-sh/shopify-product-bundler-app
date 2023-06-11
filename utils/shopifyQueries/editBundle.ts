@@ -70,6 +70,6 @@ export async function editBundle(
       },
     },
   });
-  console.log(body.data);
+
   return body.data?.metaobjectUpdate.metaobject != null;
 }
