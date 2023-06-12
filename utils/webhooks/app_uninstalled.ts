@@ -12,6 +12,7 @@ const appUninstallHandler = async (topic, shop, webhookRequestBody) => {
       create: { shop: shop, isActive: false },
     });
 
+    // Delete all bundles data in db
     await prisma.bundle_discount_id.deleteMany({
       where: {
         shop: shop,
@@ -23,8 +24,8 @@ const appUninstallHandler = async (topic, shop, webhookRequestBody) => {
         shop: shop,
       },
     });
-  } catch (e) {
-    console.log(e);
+  } catch (error) {
+    console.log(error);
   }
 };
 

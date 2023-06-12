@@ -11,8 +11,6 @@ const Providers = ({ children }) => {
     id: "app",
     fallback: { ...en, ...shopifyTranslations },
     async translations(locale) {
-      console.log("locale: " + locale);
-
       const dictionary = await import(`@/translations/${locale}.json`);
       const dictionaryPolaris = await import(
         `@shopify/polaris/locales/${locale}.json`
@@ -41,8 +39,6 @@ export default function App({ Component, pageProps }) {
       console.error(error);
     },
   });
-
-  console.log(locale);
 
   return (
     <I18nContext.Provider value={i18nManager}>

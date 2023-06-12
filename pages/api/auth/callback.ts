@@ -17,13 +17,14 @@ const handler = async (req, res) => {
     const { shop } = session;
 
     try {
+      // create metaobject definition after authentication
       const client = new shopify.clients.Graphql({ session });
       const res = await createBundleDefinition(client);
       console.log("createBundleDefinition:", res);
-    } catch (e) {
-      console.log("Exception while creating bundle definition:", e);
+    } catch (error) {
+      console.log("Exception while creating bundle definition:", error);
     }
-
+    // save shop data in db
     await prisma.active_stores.upsert({
       where: { shop: shop },
       update: { isActive: true },

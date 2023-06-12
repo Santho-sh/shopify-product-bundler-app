@@ -227,7 +227,7 @@ const CreateBundlePage = () => {
                   size="large"
                   primary
                   submit
-                  disabled={selectedProducts.length == 0 ? true : false}
+                  disabled={selectedProducts.length == 0}
                   loading={loading}
                 >
                   {i18n.translate("buttons.save_bundle")}
